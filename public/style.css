@@ -60,6 +60,13 @@ body{
     box-shadow: 10px 5px 5px black;
     display: flex;
     justify-content: center;
+    font-size: 1.8em;
+    text-decoration: none;
+    color : mediumblue;
+}
+
+.container-fluid h1{
+    color : mediumblue;
 }
 
 .w20{
@@ -75,8 +82,8 @@ body{
     width: 55%;
 }
 
-.w100{
-    width: 50%;
+.w35{
+    width: 35%;
 }
 li{
     list-style: none;
@@ -84,3 +91,4 @@ li{
     width: 80%;
     heigth: 10px;
 }
+
