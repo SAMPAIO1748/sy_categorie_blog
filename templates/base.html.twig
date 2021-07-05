@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
+    <title>{% block metaTitle %}{% endblock metaTitle %}</title>
+
+</head>
+<body>
+
+<header class="header">
+    <div class="w20">
+        <img class="w100" src="{{ asset('40-409962_royalty-free-logo-png-transparent-png.png') }}">
+    </div>
+    <div class="w60">
+        <p>
+            {% block header %}
+            {% endblock header %}
+        </p>
+    </div>
+    <div class="w20">
+        <a href="{{ path('categoriesList') }}">
+            {# <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul> #}
+            <img src="{{ asset('hamburger-menu-icon-png-white-14.jpg') }}" class="w100">
+        </a>
+
+    </div>
+
+
+</header>
+
+<main class="main">
+    {% block main %}
+    {% endblock main %}
+</main>
+
+<footer class="footer">
+    {% block footer %}
+    {% endblock footer%}
+</footer>
+
+</body>
+</html>

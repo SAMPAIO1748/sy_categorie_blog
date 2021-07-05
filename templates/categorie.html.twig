@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block metaTitle %}
+    La catégorie n°{{ categorie.id }}
+{% endblock metaTitle %}
+
+{% block header %}
+    La catégorie n°{{ categorie.id}} de la mort qui tue
+{% endblock header %}
+
+{% block main %}
+    <div class="container-fluid">
+    <div class="row">
+        <h1>{{ categorie.title }}</h1>
+        <h2>{{ categorie.content }}</h2>
+    </div>
+    </div>
+{% endblock main %}
+
+{% block footer %}
+    <p>
+        Vous avez lu la catégorie n°{{ categorie.id }} du journal de la mort qui tue de la Piscine
+    </p>
+{% endblock footer %}

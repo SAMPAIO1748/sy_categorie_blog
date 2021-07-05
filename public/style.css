@@ -1,0 +1,86 @@
+body{
+    background-color: darkcyan;
+}
+
+.header{
+    display: flex;
+    justify-content: space-around;
+    background: #5eb5e0;
+    text-align: center;
+    font-size: 2.6em;
+    color: darkslateblue;
+    border: darkslateblue 5px solid;
+    border-radius: 5px;
+    margin: 1% 1%;
+    box-shadow: 10px 5px 5px black;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.container{
+    background: DeepSkyBlue;
+    border: darkblue 5px solid;
+    border-radius: 5px;
+    margin: 1% 1%;
+    box-shadow: 10px 5px 5px black;
+}
+
+.row{
+    width: 47%;
+    display: inline-block;
+    background: MediumTurquoise;
+    border: solid 5px navy;
+    color : navy;
+    margin: 1% 1%;
+    text-align: center;
+    box-shadow: 10px 5px 5px black;
+}
+.footer{
+    background: LightSeaGreen;
+    text-align: center;
+    font-size: 2.6em;
+    color: MidnightBlue;
+    border: MidnightBlue 5px solid;
+    border-radius: 5px;
+    margin: 1% 1%;
+    box-shadow: 10px 5px 5px black;
+}
+
+.row a{
+    font-size: 1.8em;
+    text-decoration: none;
+    color : mediumblue;
+}
+
+.container-fluid{
+    background: DeepSkyBlue;
+    border: darkblue 5px solid;
+    border-radius: 5px;
+    margin: 1% 1%;
+    box-shadow: 10px 5px 5px black;
+    display: flex;
+    justify-content: center;
+}
+
+.w20{
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.w60{
+    display: flex;
+    align-items: center;
+    width: 55%;
+}
+
+.w100{
+    width: 50%;
+}
+li{
+    list-style: none;
+    background-color: black;
+    width: 80%;
+    heigth: 10px;
+}
