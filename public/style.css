@@ -10,7 +10,7 @@ body{
     font-size: 2.6em;
     color: darkslateblue;
     border: darkslateblue 5px solid;
-    border-radius: 5px;
+    border-radius: 20px;
     margin: 1% 1%;
     box-shadow: 10px 5px 5px black;
     font-weight: bold;
@@ -20,7 +20,7 @@ body{
 .container{
     background: DeepSkyBlue;
     border: darkblue 5px solid;
-    border-radius: 5px;
+    border-radius: 20px;
     margin: 1% 1%;
     box-shadow: 10px 5px 5px black;
 }
@@ -30,6 +30,7 @@ body{
     display: inline-block;
     background: MediumTurquoise;
     border: solid 5px navy;
+    border-radius: 20px;
     color : navy;
     margin: 1% 1%;
     text-align: center;
@@ -41,7 +42,7 @@ body{
     font-size: 2.6em;
     color: MidnightBlue;
     border: MidnightBlue 5px solid;
-    border-radius: 5px;
+    border-radius: 20px;
     margin: 1% 1%;
     box-shadow: 10px 5px 5px black;
 }
@@ -55,7 +56,7 @@ body{
 .container-fluid{
     background: DeepSkyBlue;
     border: darkblue 5px solid;
-    border-radius: 5px;
+    border-radius: 20px;
     margin: 1% 1%;
     box-shadow: 10px 5px 5px black;
     display: flex;
@@ -84,11 +85,5 @@ body{
 
 .w35{
     width: 35%;
-}
-li{
-    list-style: none;
-    background-color: black;
-    width: 80%;
-    heigth: 10px;
 }
 
