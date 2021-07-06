@@ -12,7 +12,7 @@ class CategoryController extends AbstractController
     private $categories = [
         1 => [
             "title" => "Batman",
-            "content" => "Tous les articles lié au Chevalier Noir de Gotham",
+            "content" => "Tous les articles liés au Chevalier Noir de Gotham",
             "id" => 1,
             "published" => true,
         ],
@@ -55,9 +55,9 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/category/{id}", name="categoryShow")
+     * @Route("/categorie/{id}", name="categorieShow")
      */
-    public function categoryShow($id)
+    public function categorieShow($id)
     {
 
         if(array_key_exists($id, $this->categories)){
