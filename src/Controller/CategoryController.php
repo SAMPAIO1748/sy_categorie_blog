@@ -11,26 +11,26 @@ class CategoryController extends AbstractController
 {
     private $categories = [
         1 => [
-            "title" => "Politique",
-            "content" => "Tous les articles liés à Jean Lassalle",
+            "title" => "Batman",
+            "content" => "Tous les articles lié au Chevalier Noir de Gotham",
             "id" => 1,
             "published" => true,
         ],
         2 => [
-            "title" => "Economie",
-            "content" => "Les meilleurs tuyaux pour avoir DU FRIC",
+            "title" => "Superman",
+            "content" => "Toutes les informations sur l'Homme d'Acier",
             "id" => 2,
             "published" => true
         ],
         3 => [
-            "title" => "Securité",
-            "content" => "Attention les étrangers sont très méchants",
+            "title" => "Spider-man",
+            "content" => "La base de ce qu'il faut savoir sur l'Araignée du coin",
             "id" => 3,
             "published" => false
         ],
         4 => [
-            "title" => "Ecologie",
-            "content" => "Hummer <3",
+            "title" => "Wonder Woman",
+            "content" => "Toute l'histoire de la Princesse des Amazones",
             "id" => 4,
             "published" => true
         ]
@@ -51,8 +51,14 @@ class CategoryController extends AbstractController
      */
     public function categoryShow($id)
     {
-        $categorie = $this->categories{$id};
-        return $this->render('categorie.html.twig', ['categorie' => $categorie]);
+
+        if(array_key_exists($id, $this->categories)){
+            $categorie = $this->categories{$id};
+            return $this->render('categorie.html.twig', ['categorie' => $categorie]);
+        }else{
+            return $this->redirectToroute('categoriesList');
+        }
+
 
     }
 }
