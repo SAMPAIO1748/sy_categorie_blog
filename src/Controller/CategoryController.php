@@ -37,7 +37,15 @@ class CategoryController extends AbstractController
     ];
 
     /**
-     * @Route("categories", name="categoriesList")
+     * @Route("/", name="home")
+     */
+    public function home()
+    {
+        return $this->render('home.html.twig');
+    }
+
+    /**
+     * @Route("/categories", name="categoriesList")
      */
     public function categorieList()
     {
@@ -47,7 +55,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("category/{id}", name="categoryShow")
+     * @Route("/category/{id}", name="categoryShow")
      */
     public function categoryShow($id)
     {
@@ -56,7 +64,7 @@ class CategoryController extends AbstractController
             $categorie = $this->categories{$id};
             return $this->render('categorie.html.twig', ['categorie' => $categorie]);
         }else{
-            return $this->redirectToroute('categoriesList');
+            return $this->redirectToroute('home');
         }
 
 
