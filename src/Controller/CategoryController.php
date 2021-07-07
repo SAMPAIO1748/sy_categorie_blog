@@ -3,38 +3,13 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 
 class CategoryController extends AbstractController
 {
-    private $categories = [
-        1 => [
-            "title" => "Batman",
-            "content" => "Tous les articles liés au Chevalier Noir de Gotham",
-            "id" => 1,
-            "published" => true,
-        ],
-        2 => [
-            "title" => "Superman",
-            "content" => "Toutes les informations sur l'Homme d'Acier",
-            "id" => 2,
-            "published" => true
-        ],
-        3 => [
-            "title" => "Spider-man",
-            "content" => "La base de ce qu'il faut savoir sur l'Araignée du coin",
-            "id" => 3,
-            "published" => false
-        ],
-        4 => [
-            "title" => "Wonder Woman",
-            "content" => "Toute l'histoire de la Princesse des Amazones",
-            "id" => 4,
-            "published" => true
-        ]
-    ];
 
     /**
      * @Route("/", name="home")
@@ -47,9 +22,9 @@ class CategoryController extends AbstractController
     /**
      * @Route("/categories", name="categoriesList")
      */
-    public function categorieList()
+    public function categorieList(CategoryRepository $categoryRepository)
     {
-        $list = $this->categories;
+        $list = $categoryRepository->findAll();
         return $this->render('categories.html.twig', ['list' => $list]);
 
     }
@@ -57,11 +32,10 @@ class CategoryController extends AbstractController
     /**
      * @Route("/categorie/{id}", name="categorieShow")
      */
-    public function categorieShow($id)
+    public function categorieShow($id, CategoryRepository $categoryRepository)
     {
-
-        if(array_key_exists($id, $this->categories)){
-            $categorie = $this->categories{$id};
+        $categorie = $categoryRepository->find($id);
+        if(isset($categorie)){
             return $this->render('categorie.html.twig', ['categorie' => $categorie]);
         }else{
             return $this->redirectToroute('home');

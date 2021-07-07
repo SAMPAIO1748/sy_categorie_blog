@@ -26,8 +26,13 @@ class ArticleController extends AbstractController
      */
     public function articleShow($id, ArticleRepository $articleRepository)
     {
+
         $article = $articleRepository->find($id);
-        return $this->render('article.html.twig', ['article' => $article]);
+        if(isset($article)){
+            return $this->render('article.html.twig', ['article' => $article]);
+        }else{
+            return $this->redirectToRoute('home');
+        }
     }
 
 }

@@ -17,7 +17,7 @@
                         <a href="{{ path('articleShow', {'id' : article.id}) }}">{{ article.title }}</a>
                     </h1>
                     <h2>
-                        {{ article.content }}
+                       Ecrit le :  {{ article.createdAt | date('y-m-d') }}
                     </h2>
                 </div>
         {# {% endif %}#}

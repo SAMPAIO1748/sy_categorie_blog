@@ -11,16 +11,14 @@
 {% block main %}
     <div class="container">
         {% for categorie in list %}
-            {% if categorie.published %}
             <div class="row">
                 <h1>
                    <a href="{{ path('categorieShow', {'id' : categorie.id}) }}">{{ categorie.title }}</a>
                 </h1>
                 <h2>
-                    {{ categorie.content }}
+                    {{ categorie.description }}
                 </h2>
             </div>
-            {% endif %}
         {% endfor %}
     </div>
 
