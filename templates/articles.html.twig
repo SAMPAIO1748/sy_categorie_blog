@@ -1,0 +1,33 @@
+{%  extends 'base.html.twig' %}
+
+{% block metaTitle %}
+    Les articles du journal
+{% endblock metaTitle %}
+
+{% block header %}
+    Les articles du journal de la mort qui tue
+{% endblock header %}
+
+{% block main %}
+    <div class="container">
+        {% for article in articles %}
+            {# {% if articles.is_published %} #}
+                <div class="row">
+                    <h1>
+                        <a href="{{ path('articleShow', {'id' : article.id}) }}">{{ article.title }}</a>
+                    </h1>
+                    <h2>
+                        {{ article.content }}
+                    </h2>
+                </div>
+        {# {% endif %}#}
+        {% endfor %}
+    </div>
+
+{% endblock main %}
+
+{% block footer %}
+    <p>
+        Vous avez lu les articles de la mort qui tue du journal de la Piscine
+    </p>
+{% endblock footer %}
