@@ -40,7 +40,5 @@ class CategoryController extends AbstractController
         }else{
             return $this->redirectToroute('home');
         }
-
-
     }
 }
