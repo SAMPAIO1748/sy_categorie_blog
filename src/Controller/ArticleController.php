@@ -32,7 +32,7 @@ class ArticleController extends AbstractController
         if(isset($article)){
             return $this->render('article.html.twig', ['article' => $article]);
         }else{
-            return $this->render("bundles/TwigBundle/Exception/error404.html.twig");
+            throw  new NotFoundHttpException("Erreur 404. La page que vous cherchez n'a pas été trouvée");
         }
     }
 
