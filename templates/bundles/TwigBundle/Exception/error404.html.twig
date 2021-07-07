@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block metaTitle %}
+    Erreur 404
+{% endblock metaTitle %}
+
+{% block header %}
+    Vous avez une erreur 404 ! Félicitation !
+{% endblock header %}
+
+{% block main %}
+    <div class="container-fluid">
+        <div class="row">
+            <h1>Erreur 404</h1>
+            <h2>La page que vous cherchez n'a pas été trouvée.</h2>
+        </div>
+    </div>
+{% endblock main %}
+
+{% block footer %}
+    <a class="afooter" href="{{ path("home") }}">Retournez sur la page d'accueil</a>
+{% endblock footer %}

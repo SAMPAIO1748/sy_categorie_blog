@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -31,7 +32,7 @@ class ArticleController extends AbstractController
         if(isset($article)){
             return $this->render('article.html.twig', ['article' => $article]);
         }else{
-            return $this->redirectToRoute('home');
+            return $this->render("bundles/TwigBundle/Exception/error404.html.twig");
         }
     }
 
