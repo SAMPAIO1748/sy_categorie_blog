@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block metaTitle %}
+    Le tag n°{{ tag.id }}
+{% endblock metaTitle %}
+
+{% block header %}
+    Le tag n°{{ tag.id}} de la mort qui tue
+{% endblock header %}
+
+{% block main %}
+    <div class="container-fluid">
+        <div class="row tag">
+            <h1>{{ tag.title }}</h1>
+            <h2 style="color : {{ tag.color }}">
+                Couleur du tag :  {{ tag.color  }}
+            </h2>
+        </div>
+    </div>
+{% endblock main %}
+
+{% block footer %}
+    <p>
+        Vous avez lu le tag n°{{ tag.id }} du journal de la mort qui tue de la Piscine
+    </p>
+{% endblock footer %}

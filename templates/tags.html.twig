@@ -1,0 +1,31 @@
+{%  extends 'base.html.twig' %}
+
+{% block metaTitle %}
+    Les tags du journal
+{% endblock metaTitle %}
+
+{% block header %}
+    Les tags du journal de la mort qui tue
+{% endblock header %}
+
+{% block main %}
+    <div class="container">
+        {% for tag in listTag %}
+            <div class="row">
+                <h1>
+                    <a href="{{ path('tagShow', {'id' : tag.id}) }}">{{ tag.title }}</a>
+                </h1>
+                <h2 style="color : {{ tag.color }}">
+                    Couleur du tag :  {{ tag.color  }}
+                </h2>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock main %}
+
+{% block footer %}
+    <p>
+        Vous avez lu les tags de la mort qui tue du journal de la Piscine
+    </p>
+{% endblock footer %}
