@@ -5,6 +5,7 @@ namespace App\Entity;
 
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Category;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
@@ -109,6 +110,27 @@ class Article
     public function setIsPublished($isPublished): void
     {
         $this->isPublished = $isPublished;
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category")
+     */
+    private $category;
+
+    /**
+     * @return mixed
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param mixed $category
+     */
+    public function setCategory($category): void
+    {
+        $this->category = $category;
     }
 
 }

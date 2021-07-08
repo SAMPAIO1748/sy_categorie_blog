@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Article;
 
 /**
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
@@ -27,6 +28,11 @@ class Category
      */
     private $description;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Article")
+     */
+    private $articles;
+    
 
     public function getId(): ?int
     {
@@ -56,4 +62,6 @@ class Category
 
         return $this;
     }
+
+
 }
