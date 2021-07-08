@@ -9,13 +9,11 @@
         <div class="row article">
             <h1>{{ article.title }}</h1>
             <h2>{{ article.content }}</h2>
-            <h3>Catégorie : {{ article.category.title }}</h3>
         </div>
     </div>
 {% endblock main %}
 
 {% block footer %}
-    <p>
-        Vous avez lu l'article n°{{ article.id }} du journal de la mort qui tue de la Piscine
-    </p>
+    <h3>Catégorie : {{ article.category.title }}</h3>
+    <h3 style="color: {{ article.tag.color }}">Étiquette : {{ article.tag.title }}</h3>
 {% endblock footer %}

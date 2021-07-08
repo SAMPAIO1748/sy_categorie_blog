@@ -29,7 +29,15 @@ class Category
      * @ORM\Column(type="text")
      */
     private $description;
-    
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="category")
+     */
+    private $articles;
+
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -58,6 +66,14 @@ class Category
         $this->description = $description;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArticles()
+    {
+        return $this->articles;
     }
 
 

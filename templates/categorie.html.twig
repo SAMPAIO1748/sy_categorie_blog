@@ -9,6 +9,9 @@
     <div class="row">
         <h1>{{ categorie.title }}</h1>
         <h2>{{ categorie.description }}</h2>
+        {% for article in categorie.articles %}
+            <a href="{{ path('articleShow', {'id' : article.id}) }}"><h3>{{ article.title }}</h3></a>
+        {% endfor %}
     </div>
     </div>
 {% endblock main %}

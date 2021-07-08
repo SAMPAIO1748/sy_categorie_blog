@@ -11,6 +11,9 @@
             <h2 style="color : {{ tag.color }}">
                 Couleur du tag :  {{ colors[tag.color] }}
             </h2>
+            {% for article in tag.articles %}
+                <a href="{{ path('articleShow', {'id' : article.id}) }}"><h3>{{ article.title }}</h3></a>
+            {% endfor %}
         </div>
     </div>
 {% endblock main %}
