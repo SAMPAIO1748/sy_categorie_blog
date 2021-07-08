@@ -38,7 +38,7 @@ class CategoryController extends AbstractController
         if(isset($categorie)){
             return $this->render('categorie.html.twig', ['categorie' => $categorie]);
         }else{
-            return $this->redirectToroute('home');
+            throw new NotFoundHttpException("Erreur 404. La page que vous cherchez n'a pas été trouvée");;
         }
     }
 }
