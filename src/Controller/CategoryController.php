@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -38,7 +39,7 @@ class CategoryController extends AbstractController
         if(isset($categorie)){
             return $this->render('categorie.html.twig', ['categorie' => $categorie]);
         }else{
-            throw new NotFoundHttpException("Erreur 404. La page que vous cherchez n'a pas été trouvée");;
+            throw new NotFoundHttpException("Erreur 404. La page que vous cherchez n'a pas été trouvée");
         }
     }
 }
