@@ -12,13 +12,20 @@ use Symfony\Component\HttpFoundation\Response;
 
 class TagController extends AbstractController
 {
+    private $colors =[
+        'red' => 'rouge',
+        'blue' => 'bleu',
+        'green' => 'vert'
+    ];
     /**
      * @Route ("/tags", name="tagList")
      */
     public function tagList(TagRepository $tagRepository)
     {
         $listTag = $tagRepository->findAll();
-        return $this->render('tags.html.twig', ['listTag' => $listTag]);
+        $color = $this->colors;
+        return $this->render('tags.html.twig', ['listTag' => $listTag,
+            'colors' => $color]);
     }
 
     /**
@@ -27,8 +34,10 @@ class TagController extends AbstractController
     public function tagShow(TagRepository $tagRepository, $id)
     {
         $tag = $tagRepository->find($id);
+        $color = $this->colors;
         if(isset($tag)){
-            return $this->render('tag.html.twig', ['tag' => $tag]);
+            return $this->render('tag.html.twig', ['tag' => $tag,
+                'colors' => $color]);
         }else{
             throw new NotFoundHttpException("Erreur 404. La page que vous cherchez n'a pas été trouvée");
         }
