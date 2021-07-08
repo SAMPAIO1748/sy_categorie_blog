@@ -12,15 +12,20 @@
 
 <header class="header">
     <div class="w20">
-        <a href="{{ path('articlesList') }}">
+        <a href="{{ path('home') }}">
             <img class="w35" src="{{ asset('PinClipart.com_web-design-clipart_3394370.png') }}">
         </a>
     </div>
     <div class="w60">
-        <p>
-            {% block header %}
-            {% endblock header %}
-        </p>
+        <div class="w30">
+            <a href="{{ path('articlesList') }}">Articles</a>
+        </div>
+        <div class="w30">
+            <a href="{{ path('categoriesList') }}">Catégories</a>
+        </div>
+        <div class="w30">
+            <a href="{{ path('tagList') }}">Tag</a>
+        </div>
     </div>
     <div class="w20">
         <a href="{{ path('categoriesList') }}">

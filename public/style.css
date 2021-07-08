@@ -98,3 +98,13 @@ body{
     width: 98%;
 }
 
+.w30{
+    display: flex;
+    justify-content: space-around;
+    width: 33%;
+}
+.w30 a{
+    text-align: center;
+    text-decoration: none;
+}
+

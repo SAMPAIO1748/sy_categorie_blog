@@ -15,7 +15,8 @@ class TagController extends AbstractController
     private $colors =[
         'red' => 'rouge',
         'blue' => 'bleu',
-        'green' => 'vert'
+        'green' => 'vert',
+        'orange' => 'orange'
     ];
     /**
      * @Route ("/tags", name="tagList")
@@ -41,7 +42,6 @@ class TagController extends AbstractController
         }else{
             throw new NotFoundHttpException("Erreur 404. La page que vous cherchez n'a pas été trouvée");
         }
-
     }
 
 }
