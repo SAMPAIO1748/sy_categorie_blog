@@ -9,7 +9,7 @@
         {% for article in articles %}
                 <div class="row">
                     <h1>
-                        <a href="{{ path('articleShow', {'id' : article.id}) }}">{{ article.title }}</a>
+                        <a href="{{ path('articleShow', {'id' : article.id}) }}" style="color: {{ article.tag.color }}">{{ article.title }}</a>
                     </h1>
                     <h2>
                        Ecrit le :  {{ article.createdAt | date('y-m-d') }}

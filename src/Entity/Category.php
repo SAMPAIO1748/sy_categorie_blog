@@ -29,6 +29,7 @@ class Category
      * @ORM\Column(type="text")
      */
     private $description;
+
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="category")
      */
