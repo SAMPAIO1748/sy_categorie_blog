@@ -50,5 +50,4 @@ class ArticleController extends AbstractController
         return $this->render('articlesearch.html.twig', ['articles' => $articles,
             'term' => $term]);
     }
-
 }
