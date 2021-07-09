@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,11 +38,12 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/search", name="search")
+     * @Route("/search/", name="search")
      */                             //Autowire
-    public function search(ArticleRepository $articleRepository)
+    public function search(ArticleRepository $articleRepository, Request $request)
     {
-        $term = "Superman";
+        // Recuperation des données entrées dans le champs q du formulaire
+        $term = $request->query->get('q');
         // Utilisation de la méthode crée dans ArtcileRepository
         $articles = $articleRepository->searchByTerm($term);
 

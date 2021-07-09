@@ -10,31 +10,37 @@
 </head>
 <body>
 
-<header class="header">
-    <div class="w20">
-        <a href="{{ path('home') }}">
-            <img class="w35" src="{{ asset('PinClipart.com_web-design-clipart_3394370.png') }}">
-        </a>
+<header >
+    <div class="header">
+        <div class="w20">
+            <a href="{{ path('home') }}">
+                <img class="w35" src="{{ asset('PinClipart.com_web-design-clipart_3394370.png') }}">
+            </a>
+        </div>
+        <div class="w60">
+            <div class="w30">
+                <a href="{{ path('articlesList') }}">Articles</a>
+            </div>
+            <div class="w30">
+                <a href="{{ path('categoriesList') }}">Catégories</a>
+            </div>
+            <div class="w30">
+                <a href="{{ path('tagList') }}">Étiquettes</a>
+            </div>
+        </div>
+        <div class="w20">
+            <a href="{{ path('categoriesList') }}">
+                <img src="{{ asset('hamburger-menu-icon-png-white-14.jpg') }}" class="w35">
+            </a>
+        </div>
     </div>
-    <div class="w60">
-        <div class="w30">
-            <a href="{{ path('articlesList') }}">Articles</a>
-        </div>
-        <div class="w30">
-            <a href="{{ path('categoriesList') }}">Catégories</a>
-        </div>
-        <div class="w30">
-            <a href="{{ path('tagList') }}">Étiquettes</a>
-        </div>
-    </div>
-    <div class="w20">
-        <a href="{{ path('categoriesList') }}">
-            <img src="{{ asset('hamburger-menu-icon-png-white-14.jpg') }}" class="w35">
-        </a>
+    <div class="search">
+        <form action="{{ path('search') }}" class="form" method="get">
+            <input class="input" type="search" placeholder="Rechercher..." name="q">
+            <input type="submit" class="button" value="Rechercher">
+        </form>
 
     </div>
-
-
 </header>
 
 <main class="main">
