@@ -1,18 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block metaTitle %}
-    Le tag n°{{ tag.id }}
+    Recherche de {{ term }}
 {% endblock metaTitle %}
 
 {% block main %}
     <div class="container-fluid">
         <div class="row tag">
-            <h1>{{ tag.title }}</h1>
-            <h2 style="color : {{ tag.color }}">
-                Couleur du tag :  {{ colors[tag.color] }}
-            </h2>
+            <h1>Voici les articles qui correspondent à la recherche :  {{ term }}</h1>
             <h2 class="underligne">Liste des comics : </h2>
-            {% for article in tag.articles %}
+            {% for article in articles %}
                 <a href="{{ path('articleShow', {'id' : article.id}) }}"><h3 style="color : {{ article.tag.color }}">{{ article.title }}</h3></a>
             {% endfor %}
         </div>
@@ -21,6 +18,6 @@
 
 {% block footer %}
     <p>
-        Vous avez lu l'étiquette n°{{ tag.id }} du journal de la mort qui tue de la Piscine
+        Vous avez lu les articles du journal de la piscine qui correspondent à la recherche :  {{ term }}
     </p>
 {% endblock footer %}

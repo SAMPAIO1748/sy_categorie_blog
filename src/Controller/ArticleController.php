@@ -36,4 +36,17 @@ class ArticleController extends AbstractController
         }
     }
 
+    /**
+     * @Route("/search", name="search")
+     */                             //Autowire
+    public function search(ArticleRepository $articleRepository)
+    {
+        $term = "Superman";
+        // Utilisation de la méthode crée dans ArtcileRepository
+        $articles = $articleRepository->searchByTerm($term);
+
+        return $this->render('articlesearch.html.twig', ['articles' => $articles,
+            'term' => $term]);
+    }
+
 }
