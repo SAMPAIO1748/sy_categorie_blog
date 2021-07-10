@@ -16,4 +16,6 @@
 {% block footer %}
     <a href="{{ path('categorieShow', {'id' :  article.category.id  }) }}"><h3>Catégorie : {{ article.category.title }}</h3></a>
     <a href="{{ path('tagShow', {'id' :  article.tag.id  }) }}"><h3 style="color: {{ article.tag.color }}">Étiquette : {{ article.tag.title }}</h3></a>
+    <a href="{{ path('articleDelete', {'id' : article.id} ) }}" class="delete">Supprimer l'article</a>
+    <a href="{{ path('articleUpdate', {'id' : article.id} ) }}" class="update">Modifier l'article</a>
 {% endblock footer %}

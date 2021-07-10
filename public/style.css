@@ -153,7 +153,41 @@ body{
     width: 100%;
 }
 
+.input{
+    margin: 1% auto;
+    width: 85%;
+    display: block;
+}
+
 .w95{
     width : 95%;
+}
+
+.add{
+    background-color: darkgreen;
+    color: white;
+    border: 5px solid darkseagreen;
+    border-radius: 20px;
+    margin: 2% 0%;
+}
+
+.delete{
+    background-color: darkred;
+    color:white;
+    border: 5px darkred solid;
+    border-radius: 20px;
+    display: block;
+    width: 25%;
+    margin: 1% auto;
+}
+
+.update{
+    background-color: darkgreen;
+    color:white;
+    border: 5px darkgreen solid;
+    border-radius: 20px;
+    display: block;
+    width: 25%;
+    margin: 1% auto;
 }
 

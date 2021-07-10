@@ -28,8 +28,8 @@ class ArticleRepository extends ServiceEntityRepository
         //Requête :
         $query = $queryBuilder
             ->select('article')// select
-            ->leftJoin('article.category', 'category')
-            ->leftJoin('article.tag', 'tag')
+            ->leftJoin('article.category', 'category')// leftJoin sur la table category
+            ->leftJoin('article.tag', 'tag') //leftJoin sur la table tag
             ->where('article.content LIKE :term')// where
             ->orWhere('article.title LIKE :term')
             ->orWhere('category.title LIKE :term')

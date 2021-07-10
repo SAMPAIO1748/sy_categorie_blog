@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block metaTitle %}
+    Ajout d'articles
+{% endblock metaTitle %}
+
+{% block main %}
+    <div class="container-fluid">
+        <div class="row tag w95">
+            <h1>Vous pouvez rajouter un article</h1>
+            <form action="{{ path('articleSave', {'id' : article.id}) }}" method="post" class="form">
+                <input type="text" name="title" class="input" placeholder="Entrer le titre de l'article" value="{{ article.title }}">
+                <textarea name="content" id="content" cols="30" rows="10" class="input" placeholder="Entrer le contenu de l'article">{{ article.content }}</textarea>
+                <select name="is_published" id="" class="input">
+                    <option value="">Choissisez un statut</option>
+                    <option value="0" {% if article.isPublished is same as(false) %} selected{% endif %}>Non Publié</option>
+                    <option value="1" {% if article.isPublished is same as(true) %} selected{% endif %}>Publié</option>
+                </select>
+                <select name="id_category" id="" class="input">
+                    <option value="">Choissisez une catégorie</option>
+                    {% for category in categories %}
+                        {% if category.title is same as(article.category.title) %}
+                            <option value="{{ category.id}}" selected>{{ category.title }}</option
+                        {% endif %}
+                        <option value="{{ category.id}}">{{ category.title }}</option>
+                    {% endfor %}
+                </select>
+                <select name="id_tag" id="" class="input">
+                    <option value="">Choissisez une étiquette</option>
+                    {% for tag in tags %}
+                        {% if tag.title is same as(article.tag.title)  %}
+                            <option value="{{ tag.id}}" selected>{{ tag.title }}</option
+                        {% endif %}
+                        <option value="{{ tag.id }}">{{ tag.title }}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Enregistrer" class="button">
+            </form>
+        </div>
+    </div>
+{% endblock main %}
+
+{% block footer %}
+    <p>
+        Merci d'ajouter des articles.
+    </p>
+{% endblock footer %}
