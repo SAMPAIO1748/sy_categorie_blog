@@ -17,8 +17,8 @@
     </div>
 {% endblock main %}
 
+
 {% block footer %}
-    <p>
-        Vous avez lu la catégorie n°{{ categorie.id }} du journal de la mort qui tue de la Piscine
-    </p>
+        <a href="{{ path('categoryDelete', {'id' : categorie.id} ) }}" class="delete">Supprimer la catégorie</a>
+        <a href="{{ path('categoryUpdate', {'id' : categorie.id} ) }}" class="update">Modifier la catégorie</a>
 {% endblock footer %}

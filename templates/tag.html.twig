@@ -20,7 +20,6 @@
 {% endblock main %}
 
 {% block footer %}
-    <p>
-        Vous avez lu l'étiquette n°{{ tag.id }} du journal de la mort qui tue de la Piscine
-    </p>
+    <a href="{{ path('tagDelete', {'id' : tag.id} ) }}" class="delete">Supprimer l'étiquette</a>
+    <a href="{{ path('tagUpdate', {'id' : tag.id} ) }}" class="update">Modifier l'étiquette</a>
 {% endblock footer %}

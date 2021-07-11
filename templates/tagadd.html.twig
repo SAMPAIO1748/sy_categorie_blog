@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block metaTitle %}
+    Ajout d'étiquettes
+{% endblock metaTitle %}
+
+{% block main %}
+    <div class="container-fluid">
+        <div class="row tag w95">
+            <h1>Vous pouvez rajouter une étiquette</h1>
+            <form action="{{ path('tagInsert') }}" method="post" class="form">
+                <input type="text" name="title" class="input" placeholder="Entrer le titre de l'étiquette">
+                <input type="text" name="color" class="input" placeholder="Entrer la couleur de l'étiquette">
+                <input type="submit" value="Ajouter" class="button">
+            </form>
+        </div>
+    </div>
+{% endblock main %}
+
+{% block footer %}
+    <p>
+        Merci d'ajouter des étiquettes.
+    </p>
+{% endblock footer %}

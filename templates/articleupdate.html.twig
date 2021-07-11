@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block metaTitle %}
-    Ajout d'articles
+    Modification de l'article n°{{ article.id }}
 {% endblock metaTitle %}
 
 {% block main %}
     <div class="container-fluid">
         <div class="row tag w95">
-            <h1>Vous pouvez rajouter un article</h1>
+            <h1>Vous pouvez modifier l'article {{ article.title }}</h1>
             <form action="{{ path('articleSave', {'id' : article.id}) }}" method="post" class="form">
                 <input type="text" name="title" class="input" placeholder="Entrer le titre de l'article" value="{{ article.title }}">
                 <textarea name="content" id="content" cols="30" rows="10" class="input" placeholder="Entrer le contenu de l'article">{{ article.content }}</textarea>
@@ -42,6 +42,6 @@
 
 {% block footer %}
     <p>
-        Merci d'ajouter des articles.
+        Merci de modifier des articles.
     </p>
 {% endblock footer %}
