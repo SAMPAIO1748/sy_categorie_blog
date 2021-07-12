@@ -70,7 +70,10 @@ class ArticleController extends AbstractController
     /**
      * @Route("/articles/insert", name="articleInsert")
      */
-    public function articleInsert(EntityManagerInterface  $entityManager, Request $request, CategoryRepository $categoryRepository, TagRepository $tagRepository)
+    public function articleInsert(EntityManagerInterface  $entityManager,
+                                  Request $request,
+                                  CategoryRepository $categoryRepository,
+                                  TagRepository $tagRepository)
     {
         // On récupère les données du formulaire en post
         $title = $request->request->get('title');
@@ -112,7 +115,10 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article/update/{id}", name="articleUpdate")
      */
-    public function articleUpadte($id, ArticleRepository $articleRepository, TagRepository $tagRepository, CategoryRepository $categoryRepository)
+    public function articleUpadte($id,
+                                  ArticleRepository $articleRepository,
+                                  TagRepository $tagRepository,
+                                  CategoryRepository $categoryRepository)
     {
         $article = $articleRepository->find($id);
         $tags = $tagRepository->findAll();
@@ -126,7 +132,12 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article/save/{id}", name="articleSave")
      */
-    public function articleSave($id,Request $request, ArticleRepository $articleRepository, TagRepository $tagRepository, CategoryRepository $categoryRepository, EntityManagerInterface $entityManager)
+    public function articleSave($id,
+                                Request $request,
+                                ArticleRepository $articleRepository,
+                                TagRepository $tagRepository,
+                                CategoryRepository $categoryRepository,
+                                EntityManagerInterface $entityManager)
     {
         $article = $articleRepository->find($id);
 
@@ -146,7 +157,5 @@ class ArticleController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('articlesList');
-
-
     }
 }
