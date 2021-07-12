@@ -72,12 +72,14 @@ class ArticleController extends AbstractController
      */
     public function articleInsert(EntityManagerInterface  $entityManager, Request $request, CategoryRepository $categoryRepository, TagRepository $tagRepository)
     {
+        // On récupère les données du formulaire en post
         $title = $request->request->get('title');
         $content = $request->request->get('content');
         $is_published = $request->request->get('is_published');
         $id_category = $categoryRepository->find($request->request->get('id_category')) ;
         $id_tag = $tagRepository->find($request->request->get('id_tag')) ;
 
+        // On crée une nouvelle entité Article et on lui ajoute les valeurs du formulaire grâce aux différents set
         $article = new Article();
         $article->setTitle($title);
         $article->setContent($content);
@@ -86,7 +88,9 @@ class ArticleController extends AbstractController
         $article->setCategory($id_category);
         $article->setTag($id_tag);
 
+        // On préenregistre les données avant de les mettre dans la BDD
         $entityManager->persist($article);
+        // On enregistre les données dans la BDD
         $entityManager->flush();
 
         return $this->redirectToRoute('articlesList');
