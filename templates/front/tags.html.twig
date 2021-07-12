@@ -1,4 +1,4 @@
-{%  extends 'base.html.twig' %}
+{%  extends 'front/base.html.twig' %}
 
 {% block metaTitle %}
     Les tags du journal
@@ -9,7 +9,7 @@
         {% for tag in listTag %}
             <div class="row">
                 <h1>
-                    <a href="{{ path('tagShow', {'id' : tag.id}) }}">{{ tag.title }}</a>
+                    <a href="{{ path('tag_show', {'id' : tag.id}) }}">{{ tag.title }}</a>
                 </h1>
                 <h2 style="color : {{ tag.color }}">
                     Couleur du tag :  {{ colors[tag.color]  }}
@@ -21,5 +21,5 @@
 {% endblock main %}
 
 {% block footer %}
-    <a href="{{ path('tagAdd') }}" class="add">Ajouter des étiquettes</a>
+    <p>Bonjour !</p>
 {% endblock footer %}

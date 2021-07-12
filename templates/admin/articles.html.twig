@@ -1,0 +1,27 @@
+{%  extends 'admin/base.html.twig' %}
+
+{% block metaTitle %}
+    Les articles du journal
+{% endblock metaTitle %}
+
+{% block main %}
+    <div class="container">
+        {% for article in articles %}
+            <div class="row">
+                <h1 style="color: {{ article.tag.color }}">
+                    {{ article.title }}
+                </h1>
+                <h2>
+                    Ecrit le :  {{ article.createdAt | date('d-m-y') }}
+                </h2>
+                <a href="{{ path('admin_article_delete', {'id' : article.id} ) }}" class="delete">Supprimer l'article</a>
+                <a href="{{ path('admin_article_update', {'id' : article.id} ) }}" class="update">Modifier l'article</a>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock main %}
+
+{% block footer %}
+    <a href="{{ path('admin_article_add') }}" class="add">Ajouter des articles</a>
+{% endblock footer %}

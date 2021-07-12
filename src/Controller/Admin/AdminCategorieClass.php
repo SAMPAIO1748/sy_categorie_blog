@@ -1,7 +1,8 @@
 <?php
 
 
-namespace App\Controller;
+namespace App\Controller\Admin;
+
 
 use App\Entity\Category;
 use App\Repository\CategoryRepository;
@@ -12,50 +13,28 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 
-class CategoryController extends AbstractController
+class AdminCategorieClass extends  AbstractController
 {
-
     /**
-     * @Route("/", name="home")
-     */
-    public function home()
-    {
-        return $this->render('home.html.twig');
-    }
-
-    /**
-     * @Route("/categories", name="categoriesList")
+     * @Route("/admin/categories", name="admin_categorie_list")
      */
     public function categorieList(CategoryRepository $categoryRepository)
     {
         $list = $categoryRepository->findAll();
-        return $this->render('categories.html.twig', ['list' => $list]);
+        return $this->render('admin/categories.html.twig', ['list' => $list]);
 
     }
 
     /**
-     * @Route("/categorie/{id}", name="categorieShow")
-     */
-    public function categorieShow($id, CategoryRepository $categoryRepository)
-    {
-        $categorie = $categoryRepository->find($id);
-        if(isset($categorie)){
-            return $this->render('categorie.html.twig', ['categorie' => $categorie]);
-        }else{
-            throw new NotFoundHttpException("Erreur 404. La page que vous cherchez n'a pas été trouvée");
-        }
-    }
-
-    /**
-     * @Route("/categories/add", name="categoryAdd")
+     * @Route("/admin/categories/add", name="admin_categorie_add")
      */
     public function categoryAdd(CategoryRepository $categoryRepository)
     {
-        return $this->render('categoryadd.html.twig');
+        return $this->render('admin/categoryadd.html.twig');
     }
 
     /**
-     * @Route("/categories/insert", name="categoryInsert")
+     * @Route("/admin/categories/insert", name="admin_categorie_insert")
      */
     public function categoryInsert(EntityManagerInterface $entityManager, Request $request)
     {
@@ -70,12 +49,12 @@ class CategoryController extends AbstractController
         $entityManager->persist($category);
         $entityManager->flush();
 
-        return $this->redirectToRoute('categoriesList');
+        return $this->redirectToRoute('admin_categorie_list');
 
     }
 
     /**
-     * @Route ("/category/delete/{id}" , name="categoryDelete")
+     * @Route ("/admin/category/delete/{id}" , name="admin_categorie_delete")
      */
     public function categoryDelete($id, categoryRepository $categoryRepository, EntityManagerInterface $entityManager)
     {
@@ -83,24 +62,26 @@ class CategoryController extends AbstractController
         $entityManager->remove($category);
         $entityManager->flush();
 
-        return $this->redirectToRoute('categoriesList');
+        return $this->redirectToRoute('admin_categorie_list');
     }
 
     /**
-     * @Route("/category/update/{id}", name="categoryUpdate")
+     * @Route("/admin/category/update/{id}", name="admin_categorie_update")
      */
-    public function categoryUpadte($id, categoryRepository $categoryRepository )
+    public function categoryUpadte($id, categoryRepository $categoryRepository)
     {
         $category = $categoryRepository->find($id);
-        
 
-        return $this->render('categoryupdate.html.twig', ['category' => $category]);
+
+        return $this->render('admin/categoryupdate.html.twig', ['category' => $category]);
     }
 
     /**
-     * @Route("/category/save/{id}", name="categorySave")
+     * @Route("/admin/category/save/{id}", name="admin_categorie_save")
      */
-    public function categorySave($id, Request $request, categoryRepository $categoryRepository, EntityManagerInterface $entityManager)
+    public function categorySave($id, Request $request,
+                                 categoryRepository $categoryRepository,
+                                 EntityManagerInterface $entityManager)
     {
         $category = $categoryRepository->find($id);
 
@@ -109,13 +90,13 @@ class CategoryController extends AbstractController
 
         $category->setTitle($title);
         $category->setDescription($description);
-       
+
 
         $entityManager->persist($category);
         $entityManager->flush();
 
-        return $this->redirectToRoute('categoriesList');
-
+        return $this->redirectToRoute('admin_categorie_list');
 
     }
+
 }

@@ -1,0 +1,19 @@
+{% extends 'front/base.html.twig' %}
+
+{% block metaTitle %}
+    L'article n°{{ article.id }}
+{% endblock metaTitle %}
+
+{% block main %}
+    <div class="container-fluid">
+        <div class="row article">
+            <h1 style="color: {{ article.tag.color }}">{{ article.title }}</h1>
+            <h2>{{ article.content }}</h2>
+        </div>
+    </div>
+{% endblock main %}
+
+{% block footer %}
+    <a href="{{ path('categorie_show', {'id' :  article.category.id  }) }}"><h3>Catégorie : {{ article.category.title }}</h3></a>
+    <a href="{{ path('tag_show', {'id' :  article.tag.id  }) }}"><h3 style="color: {{ article.tag.color }}">Étiquette : {{ article.tag.title }}</h3></a>
+{% endblock footer %}

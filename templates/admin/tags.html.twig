@@ -1,0 +1,27 @@
+{%  extends 'admin/base.html.twig' %}
+
+{% block metaTitle %}
+    Les tags du journal
+{% endblock metaTitle %}
+
+{% block main %}
+    <div class="container">
+        {% for tag in listTag %}
+            <div class="row">
+                <h1>
+                    {{ tag.title }}
+                </h1>
+                <h2 style="color : {{ tag.color }}">
+                    Couleur du tag :  {{ colors[tag.color]  }}
+                </h2>
+                <a href="{{ path('admin_tag_delete', {'id' : tag.id} ) }}" class="delete">Supprimer l'étiquette</a>
+                <a href="{{ path('admin_tag_update', {'id' : tag.id} ) }}" class="update">Modifier l'étiquette</a>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock main %}
+
+{% block footer %}
+    <a href="{{ path('admin_tag_add') }}" class="add">Ajouter des étiquettes</a>
+{% endblock footer %}

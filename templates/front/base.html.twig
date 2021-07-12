@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
+    <title>{% block metaTitle %}{% endblock metaTitle %}</title>
+
+</head>
+<body>
+
+<header >
+    <div class="header">
+        <div class="w20">
+            <a href="{{ path('home') }}">
+                <img class="w35" src="{{ asset('PinClipart.com_web-design-clipart_3394370.png') }}">
+            </a>
+        </div>
+        <div class="w60">
+            <div class="w30">
+                <a href="{{ path('article_list') }}">Articles</a>
+            </div>
+            <div class="w30">
+                <a href="{{ path('categorie_list') }}">Catégories</a>
+            </div>
+            <div class="w30">
+                <a href="{{ path('tag_list') }}">Étiquettes</a>
+            </div>
+        </div>
+        <div class="w20">
+            <a href="{{ path('categorie_list') }}">
+                <img src="{{ asset('hamburger-menu-icon-png-white-14.jpg') }}" class="w35">
+            </a>
+        </div>
+    </div>
+    <div class="search">
+        <form action="{{ path('front_search') }}" class="form" method="get">
+            <input class="input" type="search" placeholder="Rechercher..." name="q">
+            <input type="submit" class="button" value="Rechercher">
+        </form>
+
+    </div>
+</header>
+
+<main class="main">
+    {% block main %}
+    {% endblock main %}
+</main>
+
+<footer class="footer">
+    {% block footer %}
+    {% endblock footer%}
+</footer>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'front/base.html.twig' %}
 
 {% block metaTitle %}
     Le tag n°{{ tag.id }}
@@ -13,13 +13,12 @@
             </h2>
             <h2 class="underligne">Liste des comics : </h2>
             {% for article in tag.articles %}
-                <a href="{{ path('articleShow', {'id' : article.id}) }}"><h3 style="color : {{ article.tag.color }}">{{ article.title }}</h3></a>
+                <a href="{{ path('article_show', {'id' : article.id}) }}"><h3 style="color : {{ article.tag.color }}">{{ article.title }}</h3></a>
             {% endfor %}
         </div>
     </div>
 {% endblock main %}
 
 {% block footer %}
-    <a href="{{ path('tagDelete', {'id' : tag.id} ) }}" class="delete">Supprimer l'étiquette</a>
-    <a href="{{ path('tagUpdate', {'id' : tag.id} ) }}" class="update">Modifier l'étiquette</a>
+    <p>Bonjour</p>
 {% endblock footer %}

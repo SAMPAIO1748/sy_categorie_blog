@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'front/base.html.twig' %}
 
 {% block metaTitle %}
     La catégorie n°{{ categorie.id }}
@@ -11,7 +11,7 @@
         <h2>{{ categorie.description }}</h2>
         <h2 class="underligne">Liste des comics : </h2>
         {% for article in categorie.articles %}
-            <a href="{{ path('articleShow', {'id' : article.id}) }}"><h3 style="color: {{ article.tag.color }}">{{ article.title }}</h3></a>
+            <a href="{{ path('article_show', {'id' : article.id}) }}"><h3 style="color: {{ article.tag.color }}">{{ article.title }}</h3></a>
         {% endfor %}
     </div>
     </div>
@@ -19,6 +19,5 @@
 
 
 {% block footer %}
-        <a href="{{ path('categoryDelete', {'id' : categorie.id} ) }}" class="delete">Supprimer la catégorie</a>
-        <a href="{{ path('categoryUpdate', {'id' : categorie.id} ) }}" class="update">Modifier la catégorie</a>
+        <p>Bonjour</p>
 {% endblock footer %}

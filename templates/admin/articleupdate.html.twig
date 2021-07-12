@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/base.html.twig' %}
 
 {% block metaTitle %}
     Modification de l'article n°{{ article.id }}
@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <div class="row tag w95">
             <h1>Vous pouvez modifier l'article {{ article.title }}</h1>
-            <form action="{{ path('articleSave', {'id' : article.id}) }}" method="post" class="form">
+            <form action="{{ path('admin_article_save', {'id' : article.id}) }}" method="post" class="form">
                 <input type="text" name="title" class="input" placeholder="Entrer le titre de l'article" value="{{ article.title }}">
                 <textarea name="content" id="content" cols="30" rows="10" class="input" placeholder="Entrer le contenu de l'article">{{ article.content }}</textarea>
                 <select name="is_published" id="" class="input">

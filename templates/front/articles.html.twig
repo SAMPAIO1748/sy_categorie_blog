@@ -1,4 +1,4 @@
-{%  extends 'base.html.twig' %}
+{%  extends 'front/base.html.twig' %}
 
 {% block metaTitle %}
     Les articles du journal
@@ -9,7 +9,7 @@
         {% for article in articles %}
                 <div class="row">
                     <h1>
-                        <a href="{{ path('articleShow', {'id' : article.id}) }}" style="color: {{ article.tag.color }}">{{ article.title }}</a>
+                        <a href="{{ path('article_show', {'id' : article.id}) }}" style="color: {{ article.tag.color }}">{{article.title }}</a>
                     </h1>
                     <h2>
                        Ecrit le :  {{ article.createdAt | date('d-m-y') }}
@@ -21,5 +21,5 @@
 {% endblock main %}
 
 {% block footer %}
-        <a href="{{ path('articleAdd') }}" class="add">Ajouter des articles</a>
+    <p>Bravo !</p>
 {% endblock footer %}

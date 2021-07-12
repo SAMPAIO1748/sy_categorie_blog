@@ -1,7 +1,8 @@
 <?php
 
 
-namespace App\Controller;
+namespace App\Controller\Admin;
+
 
 use App\Entity\Tag;
 use App\Repository\TagRepository;
@@ -12,9 +13,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Response;
 
-
-class TagController extends AbstractController
+class AdminTagController extends AbstractController
 {
+
     private $colors =[
         'red' => 'rouge',
         'blue' => 'bleu',
@@ -28,41 +29,26 @@ class TagController extends AbstractController
         'grey' => 'gris',
     ];
     /**
-     * @Route ("/tags", name="tagList")
+     * @Route ("/admin/tags", name="admin_tag_list")
      */
     public function tagList(TagRepository $tagRepository)
     {
         $listTag = $tagRepository->findAll();
         $color = $this->colors;
-        return $this->render('tags.html.twig', ['listTag' => $listTag,
+        return $this->render('admin/tags.html.twig', ['listTag' => $listTag,
             'colors' => $color]);
     }
 
     /**
-     * @Route ("/tag/{id}", name="tagShow")
-     */
-    public function tagShow(TagRepository $tagRepository, $id)
-    {
-        $tag = $tagRepository->find($id);
-        $color = $this->colors;
-        if(isset($tag)){
-            return $this->render('tag.html.twig', ['tag' => $tag,
-                'colors' => $color]);
-        }else{
-            throw new NotFoundHttpException("Erreur 404. La page que vous cherchez n'a pas été trouvée");
-        }
-    }
-
-    /**
-     * @Route("/tags/add", name="tagAdd")
+     * @Route("/admin/tags/add", name="admin_tag_add")
      */
     public function tagAdd(tagRepository $tagRepository)
     {
-        return $this->render('tagadd.html.twig');
+        return $this->render('admin/tagadd.html.twig');
     }
 
     /**
-     * @Route("/tags/insert", name="tagInsert")
+     * @Route("/admin/tags/insert", name="admin_tag_insert")
      */
     public function tagInsert(EntityManagerInterface $entityManager, Request $request)
     {
@@ -77,12 +63,12 @@ class TagController extends AbstractController
         $entityManager->persist($tag);
         $entityManager->flush();
 
-        return $this->redirectToRoute('tagList');
+        return $this->redirectToRoute('admin_tag_list');
 
     }
 
     /**
-     * @Route ("/tag/delete/{id}" , name="tagDelete")
+     * @Route ("/admin/tag/delete/{id}" , name="admin_tag_delete")
      */
     public function tagDelete($id, tagRepository $tagRepository, EntityManagerInterface $entityManager)
     {
@@ -90,24 +76,26 @@ class TagController extends AbstractController
         $entityManager->remove($tag);
         $entityManager->flush();
 
-        return $this->redirectToRoute('tagList');
+        return $this->redirectToRoute('admin_tag_list');
     }
 
     /**
-     * @Route("/tag/update/{id}", name="tagUpdate")
+     * @Route("/admin/tag/update/{id}", name="admin_tag_update")
      */
     public function tagUpadte($id, tagRepository $tagRepository )
     {
         $tag = $tagRepository->find($id);
 
 
-        return $this->render('tagupdate.html.twig', ['tag' => $tag]);
+        return $this->render('admin/tagupdate.html.twig', ['tag' => $tag]);
     }
 
     /**
-     * @Route("/tag/save/{id}", name="tagSave")
+     * @Route("/admin/tag/save/{id}", name="admin_tag_save")
      */
-    public function tagSave($id, Request $request, tagRepository $tagRepository, EntityManagerInterface $entityManager)
+    public function tagSave($id, Request $request,
+                            tagRepository $tagRepository,
+                            EntityManagerInterface $entityManager)
     {
         $tag = $tagRepository->find($id);
 
@@ -121,7 +109,7 @@ class TagController extends AbstractController
         $entityManager->persist($tag);
         $entityManager->flush();
 
-        return $this->redirectToRoute('tagList');
+        return $this->redirectToRoute('admin_tag_list');
 
 
     }

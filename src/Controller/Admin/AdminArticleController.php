@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 
 use App\Entity\Article;
@@ -14,61 +14,33 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Component\Validator\Constraints\Date;;
 
-
-class ArticleController extends AbstractController
+class AdminArticleController extends AbstractController
 {
     /**
-     * @Route("/articles", name="articlesList")
+     * @Route("/admin/articles", name="admin_article_list")
      */
     public function articlesList(ArticleRepository $articleRepository)
     {
         $articles = $articleRepository->findAll();
-        return $this->render('articles.html.twig', ['articles' => $articles]);
+        return $this->render('admin/articles.html.twig', ['articles' => $articles]);
     }
 
-    /**
-     * @Route("/article/{id}", name="articleShow")
-     */
-    public function articleShow($id, ArticleRepository $articleRepository)
-    {
-
-        $article = $articleRepository->find($id);
-        if(isset($article)){
-            return $this->render('article.html.twig', ['article' => $article]);
-        }else{
-            throw  new NotFoundHttpException("Erreur 404. La page que vous cherchez n'a pas été trouvée");
-        }
-    }
 
     /**
-     * @Route("/search/", name="search")
-     */                             //Autowire
-    public function search(ArticleRepository $articleRepository, Request $request)
-    {
-        // Recuperation des données entrées dans le champs q du formulaire
-        $term = $request->query->get('q');
-        // Utilisation de la méthode crée dans ArtcileRepository
-        $articles = $articleRepository->searchByTerm($term);
-
-        return $this->render('articlesearch.html.twig', ['articles' => $articles,
-            'term' => $term]);
-    }
-
-    /**
-     * @Route("/articles/add", name="articleAdd")
+     * @Route("/admin/articles/add", name="admin_article_add")
      */
     public function articleAdd(TagRepository $tagRepository, CategoryRepository $categoryRepository)
     {
         $tags = $tagRepository->findAll();
         $categories = $categoryRepository->findAll();
-        return $this->render('articleadd.html.twig', ['tags' => $tags,
-             'categories' => $categories]);
+        return $this->render('admin/articleadd.html.twig', ['tags' => $tags,
+            'categories' => $categories]);
     }
 
     /**
-     * @Route("/articles/insert", name="articleInsert")
+     * @Route("/admin/articles/insert", name="admin_article_insert")
      */
     public function articleInsert(EntityManagerInterface  $entityManager,
                                   Request $request,
@@ -96,12 +68,12 @@ class ArticleController extends AbstractController
         // On enregistre les données dans la BDD
         $entityManager->flush();
 
-        return $this->redirectToRoute('articlesList');
+        return $this->redirectToRoute('admin_article_list');
 
     }
 
     /**
-     * @Route ("/article/delete/{id}" , name="articleDelete")
+     * @Route ("/admin/article/delete/{id}" , name="admin_article_delete")
      */
     public function articleDelete($id, ArticleRepository $articleRepository, EntityManagerInterface $entityManager)
     {
@@ -109,11 +81,11 @@ class ArticleController extends AbstractController
         $entityManager->remove($article);
         $entityManager->flush();
 
-        return $this->redirectToRoute('articlesList');
+        return $this->redirectToRoute('admin_article_list');
     }
 
     /**
-     * @Route("/article/update/{id}", name="articleUpdate")
+     * @Route("/admin/article/update/{id}", name="admin_article_update")
      */
     public function articleUpadte($id,
                                   ArticleRepository $articleRepository,
@@ -124,13 +96,13 @@ class ArticleController extends AbstractController
         $tags = $tagRepository->findAll();
         $categories = $categoryRepository->findAll();
 
-        return $this->render('articleupdate.html.twig', ['article' => $article,
+        return $this->render('admin/articleupdate.html.twig', ['article' => $article,
             'tags' => $tags,
             'categories' => $categories]);
     }
 
     /**
-     * @Route("/article/save/{id}", name="articleSave")
+     * @Route("/admin/article/save/{id}", name="admin_article_save")
      */
     public function articleSave($id,
                                 Request $request,
@@ -156,6 +128,7 @@ class ArticleController extends AbstractController
         $entityManager->persist($article);
         $entityManager->flush();
 
-        return $this->redirectToRoute('articlesList');
+        return $this->redirectToRoute('admin_article_list');
     }
+
 }

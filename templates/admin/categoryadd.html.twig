@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/base.html.twig' %}
 
 {% block metaTitle %}
     Ajout de catégories
@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <div class="row tag w95">
             <h1>Vous pouvez rajouter une catégorie</h1>
-            <form action="{{ path('categoryInsert') }}" method="post" class="form">
+            <form action="{{ path('admin_categorie_insert') }}" method="post" class="form">
                 <input type="text" name="title" class="input" placeholder="Entrer le titre de la catégorie">
                 <textarea name="description" id="content" cols="30" rows="10" class="input" placeholder="Entrer la description de la catégorie"></textarea>
                 <input type="submit" value="Ajouter" class="button">
