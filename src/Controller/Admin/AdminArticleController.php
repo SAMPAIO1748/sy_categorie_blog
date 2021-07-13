@@ -71,9 +71,18 @@ class AdminArticleController extends AbstractController
 
         //return $this->redirectToRoute('admin_article_list');
 
+
         $article = new Article();
 
         $articleForm = $this->createForm(ArticleType::class, $article);
+
+        $articleForm->handleRequest($request);
+
+        if($articleForm->isSubmitted() && $articleForm->isValid()){
+            $entityManager->persist($article);
+            $entityManager->flush();
+            return $this->redirectToRoute('admin_article_list');
+        }
 
         return $this->render('admin/articleadd.html.twig', ['articleForm' => $articleForm->createView()]);
 
