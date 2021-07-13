@@ -10,7 +10,7 @@
             <h1>Voici les articles qui correspondent à la recherche :  {{ term }}</h1>
             <h2 class="underligne">Liste des comics : </h2>
             {% for article in articles %}
-                <a href="{{ path('front_article_show', {'id' : article.id}) }}"><h3 style="color : {{ article.tag.color }}">{{ article.title }}</h3></a>
+                <a href="{{ path('article_show', {'id' : article.id}) }}"><h3 style="color : {{ article.tag.color }}">{{ article.title }}</h3></a>
             {% endfor %}
         </div>
     </div>

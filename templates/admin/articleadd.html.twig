@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <div class="row tag w95">
             <h1>Vous pouvez rajouter un article</h1>
-            <form action="{{ path('articleInsert') }}" method="post" class="form">
+            <form action="{{ path('admin_article_insert') }}" method="post" class="form">
                 <input type="text" name="title" class="input" placeholder="Entrer le titre de l'article">
                 <textarea name="content" id="content" cols="30" rows="10" class="input" placeholder="Entrer le contenu de l'article"></textarea>
                 <select name="is_published" id="" class="input">

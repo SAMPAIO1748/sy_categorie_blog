@@ -164,11 +164,11 @@ body{
 }
 
 .add{
-    background-color: darkgreen;
+    background-color: darkslateblue;
     color: white;
-    border: 5px solid darkseagreen;
     border-radius: 20px;
     margin: 2% 0%;
+    padding: 0% 1%;
 }
 
 .delete{
