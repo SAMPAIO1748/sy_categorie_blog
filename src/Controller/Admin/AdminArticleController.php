@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 
 
 use App\Entity\Article;
+use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\TagRepository;
@@ -31,13 +32,13 @@ class AdminArticleController extends AbstractController
     /**
      * @Route("/admin/articles/add", name="admin_article_add")
      */
-    public function articleAdd(TagRepository $tagRepository, CategoryRepository $categoryRepository)
-    {
-        $tags = $tagRepository->findAll();
-        $categories = $categoryRepository->findAll();
-        return $this->render('admin/articleadd.html.twig', ['tags' => $tags,
-            'categories' => $categories]);
-    }
+    //public function articleAdd(TagRepository $tagRepository, CategoryRepository $categoryRepository)
+    //{
+        //$tags = $tagRepository->findAll();
+        //$categories = $categoryRepository->findAll();
+        //return $this->render('admin/articleadd.html.twig', ['tags' => $tags,
+            //'categories' => $categories]);
+    //}
 
     /**
      * @Route("/admin/articles/insert", name="admin_article_insert")
@@ -48,27 +49,33 @@ class AdminArticleController extends AbstractController
                                   TagRepository $tagRepository)
     {
         // On récupère les données du formulaire en post
-        $title = $request->request->get('title');
-        $content = $request->request->get('content');
-        $is_published = $request->request->get('is_published');
-        $id_category = $categoryRepository->find($request->request->get('id_category')) ;
-        $id_tag = $tagRepository->find($request->request->get('id_tag')) ;
+        //$title = $request->request->get('title');
+        //$content = $request->request->get('content');
+        //$is_published = $request->request->get('is_published');
+        //$id_category = $categoryRepository->find($request->request->get('id_category')) ;
+        //$id_tag = $tagRepository->find($request->request->get('id_tag')) ;
 
         // On crée une nouvelle entité Article et on lui ajoute les valeurs du formulaire grâce aux différents set
-        $article = new Article();
-        $article->setTitle($title);
-        $article->setContent($content);
-        $article->setIsPublished($is_published);
-        $article->setCreatedAt( new \DateTime("NOW") );
-        $article->setCategory($id_category);
-        $article->setTag($id_tag);
+        //$article = new Article();
+        //$article->setTitle($title);
+        //$article->setContent($content);
+        //$article->setIsPublished($is_published);
+        //$article->setCreatedAt( new \DateTime("NOW") );
+        //$article->setCategory($id_category);
+        //$article->setTag($id_tag);
 
         // On préenregistre les données avant de les mettre dans la BDD
-        $entityManager->persist($article);
+        //$entityManager->persist($article);
         // On enregistre les données dans la BDD
-        $entityManager->flush();
+        //$entityManager->flush();
 
-        return $this->redirectToRoute('admin_article_list');
+        //return $this->redirectToRoute('admin_article_list');
+
+        $article = new Article();
+
+        $articleForm = $this->createForm(ArticleType::class, $article);
+
+        return $this->render('admin/articleadd.html.twig', ['articleForm' => $articleForm->createView()]);
 
     }
 
@@ -111,24 +118,24 @@ class AdminArticleController extends AbstractController
                                 CategoryRepository $categoryRepository,
                                 EntityManagerInterface $entityManager)
     {
-        $article = $articleRepository->find($id);
+        //$article = $articleRepository->find($id);
 
-        $title = $request->request->get('title');
-        $content = $request->request->get('content');
-        $is_published = $request->request->get('is_published');
-        $id_category = $categoryRepository->find($request->request->get('id_category')) ;
-        $id_tag = $tagRepository->find($request->request->get('id_tag'));
+        //$title = $request->request->get('title');
+        //$content = $request->request->get('content');
+        //$is_published = $request->request->get('is_published');
+        //$id_category = $categoryRepository->find($request->request->get('id_category')) ;
+        //$id_tag = $tagRepository->find($request->request->get('id_tag'));
 
-        $article->setTitle($title);
-        $article->setContent($content);
-        $article->setIsPublished($is_published);
-        $article->setCategory($id_category);
-        $article->setTag($id_tag);
+        //$article->setTitle($title);
+        //$article->setContent($content);
+        //$article->setIsPublished($is_published);
+        //$article->setCategory($id_category);
+        //$article->setTag($id_tag);
 
-        $entityManager->persist($article);
-        $entityManager->flush();
+        //$entityManager->persist($article);
+        //$entityManager->flush();
 
-        return $this->redirectToRoute('admin_article_list');
+        //return $this->redirectToRoute('admin_article_list');
     }
 
 }
