@@ -73,6 +73,17 @@
             {{ form_label(articleForm.createdAt, 'Date de création', {'label_attr' : {'class'  : 'label'}}) }}
             {{ form_widget(articleForm.createdAt, {'attr' : {'class'  : ''}}) }}
 
+            <div>
+                {{ form_label(articleForm.category, 'Catégorie', {'label_attr' : {'class'  : 'label'}}) }}
+                {{ form_widget(articleForm.category, {'attr' : {'class'  : ''}}) }}
+            </div>
+
+            <div>
+                {{ form_label(articleForm.tag, 'Étiquette', {'label_attr' : {'class'  : 'label'}}) }}
+                {{ form_widget(articleForm.tag, {'attr' : {'class'  : ''}}) }}
+            </div>
+
+
             {{ form_label(articleForm.isPublished, 'Etat de publication', {'label_attr' : {'class'  : 'label'}}) }}
             <div>
                 {{ form_widget(articleForm.isPublished, {'attr' : {'class'  : 'form-check-input'}}) }}
