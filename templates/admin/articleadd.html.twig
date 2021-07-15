@@ -1,12 +1,16 @@
 {% extends 'admin/base.html.twig' %}
 
+{% block link %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+{% endblock %}
+
 {% block metaTitle %}
     Ajout d'articles
 {% endblock metaTitle %}
 
 {% block main %}
-    <div class="container-fluid">
-        <div class="row tag w95">
+    <div class="container-fluid1">
+        <div class="row1 tag w95">
            {#
 
            <h1>Vous pouvez rajouter un article</h1>
@@ -35,7 +39,43 @@
 
            #}
 
-            {{ form(articleForm) }}
+            {#  form(articleForm) #}
+
+            {{ form_start(articleForm) }}
+
+            {#
+
+                {{ form_row(articleForm.title) }}
+                {{ form_row(articleForm.content) }}
+                {{ form_row(articleForm.createdAt) }}
+                {{ form_row(articleForm.isPublished) }}
+                {{ form_row(articleForm.submit) }}
+
+            #}
+
+            {{ form_label(articleForm.title, 'Titre', {'label_attr' : {'class'  : 'label'}}) }}
+            {{ form_widget(articleForm.title, {'attr' : {'class'  : 'form-control'}}) }}
+
+            {{ form_label(articleForm.content, 'Contenu', {'label_attr' : {'class'  : 'label'}}) }}
+            {{ form_widget(articleForm.content, {'attr' : {'class'  : 'form-control'}}) }}
+
+            {{ form_label(articleForm.createdAt, 'Date de création', {'label_attr' : {'class'  : 'label'}}) }}
+            {{ form_widget(articleForm.createdAt, {'attr' : {'class'  : ''}}) }}
+
+            {{ form_label(articleForm.isPublished, 'Etat de publication', {'label_attr' : {'class'  : 'label'}}) }}
+            <div>
+                {{ form_widget(articleForm.isPublished, {'attr' : {'class'  : 'form-check-input'}}) }}
+            </div>
+
+
+            <div>
+                {{ form_widget(articleForm.submit, {'attr' : {'class'  : 'btn btn-primary my-3'}, 'label': 'Enregister'}) }}
+            </div>
+
+
+            {{ form_end(articleForm) }}
+
+
         </div>
     </div>
 {% endblock main %}

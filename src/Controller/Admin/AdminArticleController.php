@@ -101,24 +101,24 @@ class AdminArticleController extends AbstractController
     }
 
     /**
-     * @Route("/admin/article/update/{id}", name="admin_article_update")
+     * @Route("/admin/article/save/{id}", name="admin_article_save")
      */
-    public function articleUpadte($id,
-                                  ArticleRepository $articleRepository,
-                                  TagRepository $tagRepository,
-                                  CategoryRepository $categoryRepository)
-    {
-        $article = $articleRepository->find($id);
-        $tags = $tagRepository->findAll();
-        $categories = $categoryRepository->findAll();
+    //public function articleUpadte($id,
+                                  // ArticleRepository $articleRepository,
+                                  // TagRepository $tagRepository,
+                                  // CategoryRepository $categoryRepository)
+    //{
+        //$article = $articleRepository->find($id);
+        //$tags = $tagRepository->findAll();
+        //$categories = $categoryRepository->findAll();
 
-        return $this->render('admin/articleupdate.html.twig', ['article' => $article,
-            'tags' => $tags,
-            'categories' => $categories]);
-    }
+        //return $this->render('admin/articleupdate.html.twig', ['article' => $article,
+            //'tags' => $tags,
+            //'categories' => $categories]);
+    //}
 
     /**
-     * @Route("/admin/article/save/{id}", name="admin_article_save")
+     * @Route("/admin/article/update/{id}", name="admin_article_update")
      */
     public function articleSave($id,
                                 Request $request,
@@ -145,6 +145,20 @@ class AdminArticleController extends AbstractController
         //$entityManager->flush();
 
         //return $this->redirectToRoute('admin_article_list');
+
+        $article = $articleRepository->find($id);
+
+        $articleForm = $this->createForm(ArticleType::class, $article);
+
+        $articleForm->handleRequest($request);
+
+        if($articleForm->isSubmitted() && $articleForm->isValid()){
+            $entityManager->persist($article);
+            $entityManager->flush();
+            return $this->redirectToRoute('admin_article_list');
+        }
+
+        return $this->render('admin/articleadd.html.twig', ['articleForm' => $articleForm->createView()]);
     }
 
 }
