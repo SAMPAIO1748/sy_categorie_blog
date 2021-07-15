@@ -11,9 +11,8 @@
 {% block main %}
     <div class="container-fluid1">
         <div class="row1 tag w95">
+            <h1>Vous pouvez rajouter un article</h1>
            {#
-
-           <h1>Vous pouvez rajouter un article</h1>
         <form action="{{ path('admin_article_insert') }}" method="post" class="form">
             <input type="text" name="title" class="input" placeholder="Entrer le titre de l'article">
             <textarea name="content" id="content" cols="30" rows="10" class="input" placeholder="Entrer le contenu de l'article"></textarea>
@@ -54,10 +53,22 @@
             #}
 
             {{ form_label(articleForm.title, 'Titre', {'label_attr' : {'class'  : 'label'}}) }}
-            {{ form_widget(articleForm.title, {'attr' : {'class'  : 'form-control'}}) }}
+            <div class="d-flex justify-content-center">
+                <div class="w60">
+                    {{ form_widget(articleForm.title, {'attr' : {'class'  : 'form-control'}}) }}
+                </div>
+            </div>
+
+
 
             {{ form_label(articleForm.content, 'Contenu', {'label_attr' : {'class'  : 'label'}}) }}
-            {{ form_widget(articleForm.content, {'attr' : {'class'  : 'form-control'}}) }}
+            <div class="d-flex justify-content-center">
+                <div class="w60">
+                    {{ form_widget(articleForm.content, {'attr' : {'class'  : 'form-control'}}) }}
+                </div>
+            </div>
+
+
 
             {{ form_label(articleForm.createdAt, 'Date de création', {'label_attr' : {'class'  : 'label'}}) }}
             {{ form_widget(articleForm.createdAt, {'attr' : {'class'  : ''}}) }}

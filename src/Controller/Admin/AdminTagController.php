@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 
 
 use App\Entity\Tag;
+use App\Form\TagType;
 use App\Repository\TagRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -40,30 +41,44 @@ class AdminTagController extends AbstractController
     }
 
     /**
-     * @Route("/admin/tags/add", name="admin_tag_add")
+     * @Route("/admin/tags/insert", name="admin_tag_insert")
      */
-    public function tagAdd(tagRepository $tagRepository)
-    {
-        return $this->render('admin/tagadd.html.twig');
-    }
+    //public function tagAdd(tagRepository $tagRepository)
+    //{
+        //return $this->render('admin/tagadd.html.twig');
+    //}
 
     /**
-     * @Route("/admin/tags/insert", name="admin_tag_insert")
+     * @Route("/admin/tags/add", name="admin_tag_add")
      */
     public function tagInsert(EntityManagerInterface $entityManager, Request $request)
     {
-        $title = $request->request->get('title');
-        $color = $request->request->get('color');
+        //$title = $request->request->get('title');
+        //$color = $request->request->get('color');
+
+        //$tag = new Tag();
+        //$tag->setTitle($title);
+        //$tag->setColor($color);
+
+
+        //$entityManager->persist($tag);
+        //$entityManager->flush();
+
+        //return $this->redirectToRoute('admin_tag_list');
 
         $tag = new Tag();
-        $tag->setTitle($title);
-        $tag->setColor($color);
 
+        $tagForm = $this->createForm(TagType::class, $tag);
 
-        $entityManager->persist($tag);
-        $entityManager->flush();
+        $tagForm->handleRequest($request);
 
-        return $this->redirectToRoute('admin_tag_list');
+        if($tagForm->isSubmitted() && $tagForm->isValid()){
+            $entityManager->persist($tag);
+            $entityManager->flush();
+            return $this->redirectToRoute('admin_tag_list');
+        }
+
+        return $this->render('admin/tagadd.html.twig', ['tagForm' => $tagForm->createView()]);
 
     }
 
@@ -80,9 +95,9 @@ class AdminTagController extends AbstractController
     }
 
     /**
-     * @Route("/admin/tag/update/{id}", name="admin_tag_update")
+     * @Route("/admin/tag/save/{id}", name="admin_tag_save")
      */
-    public function tagUpadte($id, tagRepository $tagRepository )
+    public function tagSave($id, tagRepository $tagRepository )
     {
         $tag = $tagRepository->find($id);
 
@@ -91,26 +106,37 @@ class AdminTagController extends AbstractController
     }
 
     /**
-     * @Route("/admin/tag/save/{id}", name="admin_tag_save")
+     * @Route("/admin/tag/update/{id}", name="admin_tag_update")
      */
-    public function tagSave($id, Request $request,
+    public function tagUpadte($id, Request $request,
                             tagRepository $tagRepository,
                             EntityManagerInterface $entityManager)
     {
         $tag = $tagRepository->find($id);
 
-        $title = $request->request->get('title');
-        $color = $request->request->get('color');
+        //$title = $request->request->get('title');
+        //$color = $request->request->get('color');
 
-        $tag->setTitle($title);
-        $tag->setColor($color);
+        //$tag->setTitle($title);
+        //$tag->setColor($color);
 
 
-        $entityManager->persist($tag);
-        $entityManager->flush();
+        //$entityManager->persist($tag);
+        //$entityManager->flush();
 
-        return $this->redirectToRoute('admin_tag_list');
+        //return $this->redirectToRoute('admin_tag_list');
 
+        $tagForm = $this->createForm(TagType::class, $tag);
+
+        $tagForm->handleRequest($request);
+
+        if($tagForm->isSubmitted() && $tagForm->isValid()){
+            $entityManager->persist($tag);
+            $entityManager->flush();
+            return $this->redirectToRoute('admin_tag_list');
+        }
+
+        return $this->render('admin/tagadd.html.twig', ['tagForm' => $tagForm->createView()]);
 
     }
 

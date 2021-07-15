@@ -8,11 +8,25 @@
     <div class="container-fluid">
         <div class="row tag w95">
             <h1>Vous pouvez rajouter une catégorie</h1>
-            <form action="{{ path('admin_categorie_insert') }}" method="post" class="form">
+            {# <form action="{{ path('admin_categorie_insert') }}" method="post" class="form">
                 <input type="text" name="title" class="input" placeholder="Entrer le titre de la catégorie">
                 <textarea name="description" id="content" cols="30" rows="10" class="input" placeholder="Entrer la description de la catégorie"></textarea>
                 <input type="submit" value="Ajouter" class="button">
-            </form>
+            </form> #}
+
+            {{ form_start(categoryForm) }}
+
+                {{ form_label(categoryForm.title, 'Titre', {'label_attr' : {'class'  : 'label'}}) }}
+                {{ form_widget(categoryForm.title, {'attr' : {'class'  : 'input'}}) }}
+
+                {{ form_label(categoryForm.description, 'Description', {'label_attr' : {'class'  : 'label'}}) }}
+                {{ form_widget(categoryForm.description, {'attr' : {'class'  : 'input'}}) }}
+
+            <div>
+                {{ form_widget(categoryForm.submit, {'attr' : {'class'  : 'button'}, 'label': 'Enregister'}) }}
+            </div>
+
+            {{ form_end(categoryForm) }}
         </div>
     </div>
 {% endblock main %}

@@ -8,11 +8,24 @@
     <div class="container-fluid">
         <div class="row tag w95">
             <h1>Vous pouvez rajouter une étiquette</h1>
-            <form action="{{ path('admin_tag_insert') }}" method="post" class="form">
+            {# <form action="{{ path('admin_tag_insert') }}" method="post" class="form">
                 <input type="text" name="title" class="input" placeholder="Entrer le titre de l'étiquette">
                 <input type="text" name="color" class="input" placeholder="Entrer la couleur de l'étiquette">
                 <input type="submit" value="Ajouter" class="button">
-            </form>
+            </form> #}
+            {{ form_start(tagForm) }}
+
+
+                {{ form_label(tagForm.title, 'Titre', {'label_attr' : {'class'  : 'label'}}) }}
+                {{ form_widget(tagForm.title, {'attr' : {'class'  : 'input'}}) }}
+
+                {{ form_label(tagForm.color, 'Couleur du tag', {'label_attr' : {'class'  : 'label'}}) }}
+                {{ form_widget(tagForm.color, {'attr' : {'class'  : 'input'}}) }}
+
+                <div>
+                    {{ form_widget(tagForm.submit, {'attr' : {'class'  : 'button'}, 'label': 'Enregister'}) }}
+                </div>
+            {{ form_end(tagForm) }}
         </div>
     </div>
 {% endblock main %}

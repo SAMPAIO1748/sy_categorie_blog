@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 
 
 use App\Entity\Category;
+use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,28 +29,42 @@ class AdminCategorieClass extends  AbstractController
     /**
      * @Route("/admin/categories/add", name="admin_categorie_add")
      */
-    public function categoryAdd(CategoryRepository $categoryRepository)
-    {
-        return $this->render('admin/categoryadd.html.twig');
-    }
+    //public function categoryAdd(CategoryRepository $categoryRepository)
+    //{
+       // return $this->render('admin/categoryadd.html.twig');
+    //}
 
     /**
      * @Route("/admin/categories/insert", name="admin_categorie_insert")
      */
     public function categoryInsert(EntityManagerInterface $entityManager, Request $request)
     {
-        $title = $request->request->get('title');
-        $description = $request->request->get('description');
+        //$title = $request->request->get('title');
+        //$description = $request->request->get('description');
+
+        //$category = new Category();
+        //$category->setTitle($title);
+        //$category->setDescription($description);
+
+
+        //$entityManager->persist($category);
+        //$entityManager->flush();
+
+        //return $this->redirectToRoute('admin_categorie_list');
 
         $category = new Category();
-        $category->setTitle($title);
-        $category->setDescription($description);
 
+        $categoryForm = $this->createForm(CategoryType::class, $category);
 
-        $entityManager->persist($category);
-        $entityManager->flush();
+        $categoryForm->handleRequest($request);
 
-        return $this->redirectToRoute('admin_categorie_list');
+        if($categoryForm->isSubmitted() && $categoryForm->isValid()){
+            $entityManager->persist($category);
+            $entityManager->flush();
+            return $this->redirectToRoute('admin_category_list');
+        }
+
+        return $this->render('admin/categoryadd.html.twig', ['categoryForm' => $categoryForm->createView()]);
 
     }
 
@@ -66,36 +81,48 @@ class AdminCategorieClass extends  AbstractController
     }
 
     /**
-     * @Route("/admin/category/update/{id}", name="admin_categorie_update")
-     */
-    public function categoryUpadte($id, categoryRepository $categoryRepository)
-    {
-        $category = $categoryRepository->find($id);
-
-
-        return $this->render('admin/categoryupdate.html.twig', ['category' => $category]);
-    }
-
-    /**
      * @Route("/admin/category/save/{id}", name="admin_categorie_save")
      */
-    public function categorySave($id, Request $request,
+    //public function categorySave($id, categoryRepository $categoryRepository)
+    //{
+       // $category = $categoryRepository->find($id);
+
+
+       // return $this->render('admin/categoryupdate.html.twig', ['category' => $category]);
+    //}
+
+    /**
+     * @Route("/admin/category/update/{id}", name="admin_categorie_update")
+     */
+    public function categoryUpdate($id, Request $request,
                                  categoryRepository $categoryRepository,
                                  EntityManagerInterface $entityManager)
     {
         $category = $categoryRepository->find($id);
 
-        $title = $request->request->get('title');
-        $description = $request->request->get('description');
+        //$title = $request->request->get('title');
+        //$description = $request->request->get('description');
 
-        $category->setTitle($title);
-        $category->setDescription($description);
+        //$category->setTitle($title);
+        //$category->setDescription($description);
 
 
-        $entityManager->persist($category);
-        $entityManager->flush();
+        //$entityManager->persist($category);
+        //$entityManager->flush();
 
-        return $this->redirectToRoute('admin_categorie_list');
+        //return $this->redirectToRoute('admin_categorie_list');
+
+        $categoryForm = $this->createForm(CategoryType::class, $category);
+
+        $categoryForm->handleRequest($request);
+
+        if($categoryForm->isSubmitted() && $categoryForm->isValid()){
+            $entityManager->persist($category);
+            $entityManager->flush();
+            return $this->redirectToRoute('admin_category_list');
+        }
+
+        return $this->render('admin/categoryadd.html.twig', ['categoryForm' => $categoryForm->createView()]);
 
     }
 

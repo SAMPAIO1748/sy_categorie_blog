@@ -103,7 +103,7 @@ class AdminArticleController extends AbstractController
     /**
      * @Route("/admin/article/save/{id}", name="admin_article_save")
      */
-    //public function articleUpadte($id,
+    //public function articleSave($id,
                                   // ArticleRepository $articleRepository,
                                   // TagRepository $tagRepository,
                                   // CategoryRepository $categoryRepository)
@@ -120,7 +120,7 @@ class AdminArticleController extends AbstractController
     /**
      * @Route("/admin/article/update/{id}", name="admin_article_update")
      */
-    public function articleSave($id,
+    public function articleUpdate($id,
                                 Request $request,
                                 ArticleRepository $articleRepository,
                                 TagRepository $tagRepository,
