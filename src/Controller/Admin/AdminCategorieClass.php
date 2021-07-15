@@ -61,7 +61,7 @@ class AdminCategorieClass extends  AbstractController
         if($categoryForm->isSubmitted() && $categoryForm->isValid()){
             $entityManager->persist($category);
             $entityManager->flush();
-            return $this->redirectToRoute('admin_category_list');
+            return $this->redirectToRoute('admin_categorie_list');
         }
 
         return $this->render('admin/categoryadd.html.twig', ['categoryForm' => $categoryForm->createView()]);
@@ -119,7 +119,7 @@ class AdminCategorieClass extends  AbstractController
         if($categoryForm->isSubmitted() && $categoryForm->isValid()){
             $entityManager->persist($category);
             $entityManager->flush();
-            return $this->redirectToRoute('admin_category_list');
+            return $this->redirectToRoute('admin_categorie_list');
         }
 
         return $this->render('admin/categoryadd.html.twig', ['categoryForm' => $categoryForm->createView()]);

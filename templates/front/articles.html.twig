@@ -7,14 +7,17 @@
 {% block main %}
     <div class="container">
         {% for article in articles %}
+            {% if article.isPublished %}
                 <div class="row">
                     <h1>
                         <a href="{{ path('article_show', {'id' : article.id}) }}" style="color: {{ article.tag.color }}">{{article.title }}</a>
                     </h1>
                     <h2>
-                       Ecrit le :  {{ article.createdAt | date('d-m-y') }}
+                        Ecrit le :  {{ article.createdAt | date('d-m-y') }}
                     </h2>
                 </div>
+            {% endif %}
+
         {% endfor %}
     </div>
 

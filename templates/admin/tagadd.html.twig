@@ -16,11 +16,11 @@
             {{ form_start(tagForm) }}
 
 
-                {{ form_label(tagForm.title, 'Titre', {'label_attr' : {'class'  : 'label'}}) }}
-                {{ form_widget(tagForm.title, {'attr' : {'class'  : 'input'}}) }}
+                {{ form_label(tagForm.title, 'Titre :', {'label_attr' : {'class'  : 'label'}}) }}
+                {{ form_widget(tagForm.title, {'attr' : {'class'  : 'input', 'placeholder' : 'Titre de l\'étiquette'}}) }}
 
-                {{ form_label(tagForm.color, 'Couleur du tag', {'label_attr' : {'class'  : 'label'}}) }}
-                {{ form_widget(tagForm.color, {'attr' : {'class'  : 'input'}}) }}
+                {{ form_label(tagForm.color, 'Couleur de l\'étiquette :', {'label_attr' : {'class'  : 'label'}}) }}
+                {{ form_widget(tagForm.color, {'attr' : {'class'  : 'input', 'placeholder' : 'Couleur de l\'étiquette'}}) }}
 
                 <div>
                     {{ form_widget(tagForm.submit, {'attr' : {'class'  : 'button'}, 'label': 'Enregister'}) }}
