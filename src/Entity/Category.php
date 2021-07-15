@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Entity\Article;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -22,11 +23,25 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir le titre de la catégorie")
+     * @Assert\Length(
+     *     min = 2,
+     *     max = 200,
+     *     minMessage="Votre titre doit faire au moins 2 caractères.",
+     *     maxMessage="Votre titre doit faire au plus 200 caractères"
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     *  @Assert\NotBlank(message="Veuillez remplir la description de la catégorie")
+     * @Assert\Length(
+     *     min = 2,
+     *     max = 200,
+     *     minMessage="Votre description doit faire au moins 2 caractères.",
+     *     maxMessage="Votre description doit faire au plus 500 caractères"
+     * )
      */
     private $description;
 

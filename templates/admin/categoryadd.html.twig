@@ -16,11 +16,29 @@
 
             {{ form_start(categoryForm) }}
 
+            <div>
                 {{ form_label(categoryForm.title, 'Titre :', {'label_attr' : {'class'  : 'label'}}) }}
-                {{ form_widget(categoryForm.title, {'attr' : {'class'  : 'input', 'placeholder' : 'Titre de la catégorie'}}) }}
+            </div>
 
+            <div>
+                {{ form_widget(categoryForm.title, {'attr' : {'class'  : 'input', 'placeholder' : 'Titre de la catégorie'}}) }}
+            </div>
+
+            <div>
+                {{ form_errors(categoryForm.title) }}
+            </div>
+
+            <div>
                 {{ form_label(categoryForm.description, 'Description :', {'label_attr' : {'class'  : 'label'}}) }}
+            </div>
+
+            <div>
                 {{ form_widget(categoryForm.description, {'attr' : {'class'  : 'input', 'placeholder' : 'Description de la catégorie'}}) }}
+            </div>
+
+            <div>
+                {{ form_errors(categoryForm.description) }}
+            </div>
 
             <div>
                 {{ form_widget(categoryForm.submit, {'attr' : {'class'  : 'button'}, 'label': 'Enregister'}) }}

@@ -15,12 +15,30 @@
             </form> #}
             {{ form_start(tagForm) }}
 
+                <div>
+                    {{ form_label(tagForm.title, 'Titre :', {'label_attr' : {'class'  : 'label'}}) }}
+                </div>
+                <div>
+                    {{ form_widget(tagForm.title, {'attr' : {'class'  : 'input', 'placeholder' : 'Titre de l\'étiquette'}}) }}
+                </div>
 
-                {{ form_label(tagForm.title, 'Titre :', {'label_attr' : {'class'  : 'label'}}) }}
-                {{ form_widget(tagForm.title, {'attr' : {'class'  : 'input', 'placeholder' : 'Titre de l\'étiquette'}}) }}
+                <div>
+                    {{ form_errors(tagForm.title) }}
+                </div>
 
-                {{ form_label(tagForm.color, 'Couleur de l\'étiquette :', {'label_attr' : {'class'  : 'label'}}) }}
-                {{ form_widget(tagForm.color, {'attr' : {'class'  : 'input', 'placeholder' : 'Couleur de l\'étiquette'}}) }}
+
+                <div>
+                    {{ form_label(tagForm.color, 'Couleur de l\'étiquette :', {'label_attr' : {'class'  : 'label'}}) }}
+                </div>
+
+                <div>
+                    {{ form_widget(tagForm.color, {'attr' : {'class'  : 'input', 'placeholder' : 'Couleur de l\'étiquette'}}) }}
+                </div>
+
+                <div>
+                    {{ form_errors(tagForm.color) }}
+                </div>
+
 
                 <div>
                     {{ form_widget(tagForm.submit, {'attr' : {'class'  : 'button'}, 'label': 'Enregister'}) }}

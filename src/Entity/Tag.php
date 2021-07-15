@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\TagRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,6 +12,19 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tag
 {
+    const COLORS =[
+        'red',
+        'blue',
+        'green',
+        'orange',
+        'black',
+        'brown',
+        'yellow',
+        'pink',
+        'violet',
+        'grey',
+    ];
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -20,16 +34,26 @@ class Tag
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir le titre de l'étiquette")
+     * @Assert\Length(
+     *     min = 2,
+     *     max = 200,
+     *     minMessage="Votre titre doit faire au moins 2 caractères.",
+     *     maxMessage="Votre titre doit faire au plus 500 caractères"
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Veuillez remplir la couleur de l"étiquette")
+     * @Assert\Choice(choices=Tag::COLORS, message="Votre couleur doit être valide")
      */
     private $color;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="tag")
+     *
      */
     private $articles;
 

@@ -42,6 +42,8 @@
 
             {{ form_start(articleForm) }}
 
+
+
             {#
 
                 {{ form_row(articleForm.title) }}
@@ -58,7 +60,9 @@
                     {{ form_widget(articleForm.title, {'attr' : {'class'  : 'form-control', 'placeholder' : 'Titre de l\'article'}}) }}
                 </div>
             </div>
-
+            <div >
+                {{ form_errors(articleForm.title) }}
+            </div>
 
 
             {{ form_label(articleForm.content, 'Contenu :', {'label_attr' : {'class'  : 'label'}}) }}
@@ -66,6 +70,9 @@
                 <div class="w60">
                     {{ form_widget(articleForm.content, {'attr' : {'class'  : 'form-control', 'placeholder' : 'Contenu de l\'article'}}) }}
                 </div>
+            </div>
+            <div>
+                {{ form_errors(articleForm.content) }}
             </div>
 
 
