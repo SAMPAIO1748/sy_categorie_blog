@@ -1,0 +1,23 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block metaTitle %}
+    Ajout de catégories
+{% endblock metaTitle %}
+
+{% block main %}
+<div class="container-fluid">
+    <div class="row tag w95">
+        <h1>Vous pouvez rajouter une catégorie</h1>
+                <form action="{{ path('insert_user') }}" method="post" class="form">
+                <input type="email" name="email" class="input" placeholder="Entrer votre email">
+                <input name="role" type="text" class="input" placeholder="Entrer votre role">
+                <input type="password" name="password" class="input" placeholder="Entrer votre mot de passe">
+                <input type="submit" value="Ajouter" class="button">
+            </form>
+        {% endblock main %}
+
+{% block footer %}
+    <p>
+        Merci d'ajouter des users.
+    </p>
+{% endblock footer %}
