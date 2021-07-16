@@ -61,31 +61,32 @@
 
 </form>
     {% endif %}
-    <style>
-        body{
-            background-color: darkcyan;
-        }
-        .label{
-            color: navy;
-        }
-        h1{
-            color: navy;
-            font-size: 2.1em;
-        }
-        a{
-            text-decoration: none;
-            color: darkblue;
-            font-weight: bold;
-            border-radius: 20px;
-            padding: 1% 2%;
-        }
-        .title{
-            font-size: 1.9em;
-            color: darkblue;
-        }
-    </style>
+
 {% endblock %}
 
 {% block footer %}
-    <a href="{{ path('add_user') }}"></a>
+    <a href="{{ path('add_user') }}">Ajouter des users</a>
+    <style>
+    body{
+        background-color: darkcyan;
+    }
+    .label{
+        color: navy;
+    }
+    h1{
+        color: navy;
+        font-size: 2.1em;
+    }
+    a{
+        text-decoration: none;
+        color: darkblue;
+        font-weight: bold;
+        border-radius: 20px;
+        padding: 1% 2%;
+    }
+    .title{
+        font-size: 1.9em;
+        color: darkblue;
+    }
+</style>
 {% endblock %}
