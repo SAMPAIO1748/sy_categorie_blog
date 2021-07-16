@@ -6,6 +6,11 @@
 
 {% block main %}
     <div class="container">
+        {% for message in app.flashes('notice') %}
+            <div class="flash-notice">
+                {{ message }}
+            </div>
+        {% endfor %}
         {% for tag in listTag %}
             <div class="row">
                 <h1>

@@ -40,7 +40,6 @@ class Tag
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="tag")
-     *
      */
     private $articles;
 

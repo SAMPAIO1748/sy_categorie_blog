@@ -61,6 +61,9 @@ class AdminCategorieClass extends  AbstractController
         if($categoryForm->isSubmitted() && $categoryForm->isValid()){
             $entityManager->persist($category);
             $entityManager->flush();
+            $this->addFlash(
+                'notice',
+                'Votre catégorie est enregistrée');
             return $this->redirectToRoute('admin_categorie_list');
         }
 
@@ -76,6 +79,9 @@ class AdminCategorieClass extends  AbstractController
         $category = $categoryRepository->find($id);
         $entityManager->remove($category);
         $entityManager->flush();
+        $this->addFlash(
+            'notice',
+            'Votre catégorie est supprimée');
 
         return $this->redirectToRoute('admin_categorie_list');
     }
@@ -119,6 +125,9 @@ class AdminCategorieClass extends  AbstractController
         if($categoryForm->isSubmitted() && $categoryForm->isValid()){
             $entityManager->persist($category);
             $entityManager->flush();
+            $this->addFlash(
+                'notice',
+                'Votre catégorie est modifiée');
             return $this->redirectToRoute('admin_categorie_list');
         }
 

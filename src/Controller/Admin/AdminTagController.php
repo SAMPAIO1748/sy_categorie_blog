@@ -75,6 +75,9 @@ class AdminTagController extends AbstractController
         if($tagForm->isSubmitted() && $tagForm->isValid()){
             $entityManager->persist($tag);
             $entityManager->flush();
+            $this->addFlash(
+                'notice',
+                'Votre étiquette est enregistrée');
             return $this->redirectToRoute('admin_tag_list');
         }
 
@@ -90,7 +93,9 @@ class AdminTagController extends AbstractController
         $tag = $tagRepository->find($id);
         $entityManager->remove($tag);
         $entityManager->flush();
-
+        $this->addFlash(
+            'notice',
+            'Votre étiquette est supprimée');
         return $this->redirectToRoute('admin_tag_list');
     }
 
@@ -133,6 +138,9 @@ class AdminTagController extends AbstractController
         if($tagForm->isSubmitted() && $tagForm->isValid()){
             $entityManager->persist($tag);
             $entityManager->flush();
+            $this->addFlash(
+                'notice',
+                'Votre étiquette est modifiée');
             return $this->redirectToRoute('admin_tag_list');
         }
 

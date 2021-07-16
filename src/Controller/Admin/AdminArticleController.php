@@ -46,7 +46,7 @@ class AdminArticleController extends AbstractController
     public function articleInsert(EntityManagerInterface  $entityManager,
                                   Request $request,
                                   CategoryRepository $categoryRepository,
-                                  TagRepository $tagRepository)
+                                  TagRepository $tagRepository): Response
     {
         // On récupère les données du formulaire en post
         //$title = $request->request->get('title');
@@ -81,6 +81,9 @@ class AdminArticleController extends AbstractController
         if($articleForm->isSubmitted() && $articleForm->isValid()){
             $entityManager->persist($article);
             $entityManager->flush();
+            $this->addFlash(
+                'notice',
+                'Votre article est enregistré');
             return $this->redirectToRoute('admin_article_list');
         }
 
@@ -96,6 +99,9 @@ class AdminArticleController extends AbstractController
         $article = $articleRepository->find($id);
         $entityManager->remove($article);
         $entityManager->flush();
+        $this->addFlash(
+            'notice',
+            'Votre article est supprimé');
 
         return $this->redirectToRoute('admin_article_list');
     }
@@ -125,7 +131,7 @@ class AdminArticleController extends AbstractController
                                 ArticleRepository $articleRepository,
                                 TagRepository $tagRepository,
                                 CategoryRepository $categoryRepository,
-                                EntityManagerInterface $entityManager)
+                                EntityManagerInterface $entityManager): Response
     {
         //$article = $articleRepository->find($id);
 
@@ -155,6 +161,9 @@ class AdminArticleController extends AbstractController
         if($articleForm->isSubmitted() && $articleForm->isValid()){
             $entityManager->persist($article);
             $entityManager->flush();
+            $this->addFlash(
+                'notice',
+                'Votre article est modifié');
             return $this->redirectToRoute('admin_article_list');
         }
 

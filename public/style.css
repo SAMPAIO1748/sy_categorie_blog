@@ -238,3 +238,15 @@ body{
 li{
     list-style: none;
 }
+
+.flash-notice{
+    margin: 1% auto;
+    color: darkblue;
+    background-color: #5eb5e0;
+    border: darkblue 5px solid;
+    font-size: 1.8em;
+    text-align: center;
+    width: 20%;
+    padding: 1% 2%;
+    border-radius: 20px;
+}
