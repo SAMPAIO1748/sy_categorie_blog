@@ -12,8 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tag
 {
-    
-
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -36,7 +34,7 @@ class Tag
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank(message="Veuillez remplir la couleur de l'étiquette")
-     * @Assert\Choice({"red", "blue","green","orange","black","brown","yellow","pink","violet","grey"}, message="Vous devez donner une couleur valide.")
+     * @Assert\Choice({"red", "blue","green","orange","black","brown","yellow","pink","violet","grey"}, message="Vous devez donner une couleur valide : red,blue,green,orange,black,brown,yellow,pink,violet,grey")
      */
     private $color;
 
