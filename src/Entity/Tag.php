@@ -12,18 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tag
 {
-    const COLORS =[
-        'red',
-        'blue',
-        'green',
-        'orange',
-        'black',
-        'brown',
-        'yellow',
-        'pink',
-        'violet',
-        'grey',
-    ];
+    
 
     /**
      * @ORM\Id
@@ -46,8 +35,8 @@ class Tag
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank(message="Veuillez remplir la couleur de l"étiquette")
-     * @Assert\Choice(choices=Tag::COLORS, message="Votre couleur doit être valide")
+     * @Assert\NotBlank(message="Veuillez remplir la couleur de l'étiquette")
+     * @Assert\Choice({"red", "blue","green","orange","black","brown","yellow","pink","violet","grey"}, message="Vous devez donner une couleur valide.")
      */
     private $color;
 
