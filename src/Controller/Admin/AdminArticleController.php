@@ -9,13 +9,15 @@ use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\TagRepository;
+use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Validator\Constraints\Date;;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Validator\Constraints\Date;
 
 class AdminArticleController extends AbstractController
 {
@@ -46,7 +48,9 @@ class AdminArticleController extends AbstractController
     public function articleInsert(EntityManagerInterface  $entityManager,
                                   Request $request,
                                   CategoryRepository $categoryRepository,
-                                  TagRepository $tagRepository): Response
+                                  TagRepository $tagRepository,
+                                    SluggerInterface $slugger
+    ): Response
     {
         // On récupère les données du formulaire en post
         //$title = $request->request->get('title');
@@ -79,6 +83,23 @@ class AdminArticleController extends AbstractController
         $articleForm->handleRequest($request);
 
         if($articleForm->isSubmitted() && $articleForm->isValid()){
+            $imageFile = $articleForm->get('image')->getData();
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                dump($imageFile->guessExtension());
+                die();
+                $newFilename = $safeFilename. "-" . uniqid() . "." .$imageFile->guessExtension();
+
+
+
+                    $imageFile->move(
+                        $this->getParameter('articles'),
+                        $newFilename
+                    );
+
+                $article->setImage($newFilename);
+            }
             $entityManager->persist($article);
             $entityManager->flush();
             $this->addFlash(

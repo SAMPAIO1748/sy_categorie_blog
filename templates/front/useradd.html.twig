@@ -13,6 +13,12 @@
                 <input type="password" name="password" class="input" placeholder="Entrer votre mot de passe">
                 <input type="submit" value="Ajouter" class="button">
             </form>
+            {# Version avec Form de Symfony
+            {{ form_start(userForm) }}
+             {{ form_widget(userForm.email, {'attr' : {'class'  : 'form-control', 'placeholder' : 'Adresse email'}}) }}
+             {{ form_widget(userForm.password, {'attr' : {'class'  : 'form-control', 'placeholder' : 'Mot de passe'}}) }
+             {{ form_end(userForm) }}
+             #}
         {% endblock main %}
 
 {% block footer %}

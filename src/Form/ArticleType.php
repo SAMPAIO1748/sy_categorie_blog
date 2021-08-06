@@ -7,6 +7,7 @@ use App\Entity\Category;
 use App\Entity\Tag;
 use phpDocumentor\Reflection\Type;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -36,6 +37,9 @@ class ArticleType extends AbstractType
                 'choice_label' => 'title',
                 'multiple' => false,
                 'expanded' => false
+            ])
+            ->add('image', FileType::class, [
+                'mapped' => false
             ])
             ->add('submit', SubmitType::class)
         ;

@@ -101,11 +101,23 @@
 
             </div>
 
+                <div>
+                    {{ form_label(articleForm.isPublished, 'Etat de publication :', {'label_attr' : {'class'  : 'label'}}) }}
+                    <div>
+                        {{ form_widget(articleForm.isPublished, {'attr' : {'class'  : 'form-check-input'}}) }}
+                    </div>
+                </div>
 
-            {{ form_label(articleForm.isPublished, 'Etat de publication :', {'label_attr' : {'class'  : 'label'}}) }}
             <div>
-                {{ form_widget(articleForm.isPublished, {'attr' : {'class'  : 'form-check-input'}}) }}
+                {{ form_label(articleForm.image, 'Image :', {'label_attr' : {'class'  : 'label'}}) }}
+                <div>
+                    {{ form_widget(articleForm.image) }}
+                </div>
             </div>
+
+
+
+
 
 
             <div>
