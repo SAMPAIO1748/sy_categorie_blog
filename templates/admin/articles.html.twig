@@ -14,7 +14,7 @@
         {% for article in articles %}
             <div class="row">
                 <h1 style="color: {{ article.tag.color }}">
-                    {{ article.title }}
+                    <a href="{{ path('admin_article_show', {'id' : article.id } ) }}">{{ article.title }}</a>
                 </h1>
                 <h2>
                     Ecrit le :  {{ article.createdAt | date('d-m-y') }}

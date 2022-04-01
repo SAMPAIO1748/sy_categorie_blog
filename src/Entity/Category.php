@@ -35,7 +35,7 @@ class Category
 
     /**
      * @ORM\Column(type="text")
-     *  @Assert\NotBlank(message="Veuillez remplir la description de la catégorie")
+     * @Assert\NotBlank(message="Veuillez remplir la description de la catégorie")
      * @Assert\Length(
      *     min = 2,
      *     max = 200,
@@ -113,7 +113,5 @@ class Category
 
         return $this;
     }
-
-
 
 }

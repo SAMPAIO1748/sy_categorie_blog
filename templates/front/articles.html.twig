@@ -12,6 +12,7 @@
                     <h1>
                         <a href="{{ path('article_show', {'id' : article.id}) }}" style="color: {{ article.tag.color }}">{{article.title }}</a>
                     </h1>
+                    <h2>Catégorie : {{ article.category.title }}</h2>
                     <h2>
                         Ecrit le :  {{ article.createdAt | date('d-m-y') }}
                     </h2>

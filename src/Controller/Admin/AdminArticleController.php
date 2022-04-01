@@ -9,7 +9,6 @@ use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\TagRepository;
-use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\String\Slugger\SluggerInterface;
-use Symfony\Component\Validator\Constraints\Date;
 
 class AdminArticleController extends AbstractController
 {
@@ -28,6 +26,21 @@ class AdminArticleController extends AbstractController
     {
         $articles = $articleRepository->findAll();
         return $this->render('admin/articles.html.twig', ['articles' => $articles]);
+    }
+
+    /**
+     * @Route("/admin/article/{id}", name="admin_article_show")
+     */
+    public function articleShow($id, ArticleRepository $articleRepository)
+    {
+
+        $article = $articleRepository->find($id);
+        if (isset($article)) {
+            return $this->render('front/article.html.twig', ['article' => $article]);
+        } else {
+            throw  new NotFoundHttpException("Erreur 404. La page que vous cherchez n'a pas été trouvée");
+        }
+
     }
 
 
@@ -90,8 +103,6 @@ class AdminArticleController extends AbstractController
                 dump($imageFile->guessExtension());
                 die();
                 $newFilename = $safeFilename. "-" . uniqid() . "." .$imageFile->guessExtension();
-
-
 
                     $imageFile->move(
                         $this->getParameter('articles'),

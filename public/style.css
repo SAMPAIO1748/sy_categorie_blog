@@ -37,6 +37,40 @@ body{
     box-shadow: 10px 5px 5px black;
 }
 
+.add{
+    background-color: darkslateblue;
+    color: white;
+    border-radius: 20px;
+    margin: 2% 0%;
+    padding: 0% 1%;
+}
+
+.delete{
+    background-color: darkred;
+    color:white;
+    border: 5px darkred solid;
+    border-radius: 20px;
+    display: block;
+    width: 25%;
+    margin: 1% auto;
+    text-align: center;
+}
+
+.update{
+    background-color: darkgreen;
+    color:white;
+    border: 5px darkgreen solid;
+    border-radius: 20px;
+    display: block;
+    width: 25%;
+    margin: 1% auto;
+}
+.row a{
+     font-size: 1.8em;
+     text-decoration: none;
+     color : mediumblue;
+ }
+
 .row1{
     width: 47%;
     display: inline-block;
@@ -67,11 +101,7 @@ body{
     font-size: 2.0em;
 }
 
-.row a{
-    font-size: 1.8em;
-    text-decoration: none;
-    color : mediumblue;
-}
+
 
 .row1 a{
     font-size: 1.8em;
@@ -198,34 +228,7 @@ body{
     width : 95%;
 }
 
-.add{
-    background-color: darkslateblue;
-    color: white;
-    border-radius: 20px;
-    margin: 2% 0%;
-    padding: 0% 1%;
-}
 
-.delete{
-    background-color: darkred;
-    color:white;
-    border: 5px darkred solid;
-    border-radius: 20px;
-    display: block;
-    width: 25%;
-    margin: 1% auto;
-    text-align: center;
-}
-
-.update{
-    background-color: darkgreen;
-    color:white;
-    border: 5px darkgreen solid;
-    border-radius: 20px;
-    display: block;
-    width: 25%;
-    margin: 1% auto;
-}
 
 .label{
     font-size: 1.8em;
